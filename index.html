@@ -431,9 +431,9 @@ var CONFIG = {
   phoneIntl: "916390630017",
   phoneShow: "+91 63906 30017",
   email: "vascenttravel@gmail.com",
-  address: "Deoria, Uttar Pradesh 274001",
+  address: "Deoria, Uttar Pradesh-274001",
   visaMarkup: 2000,                    // ₹2,000 added automatically on top of every base visa fare
-  faresUpdated: "25 Nov 2026"
+  faresUpdated: "30 Nov 2026"
 };
 
 /* Slider: Put your own flight image link in img:"" — built-in aviation artwork shows automatically if empty */
@@ -445,39 +445,30 @@ var SLIDES = [
 
 /* Today's Best Fares: {from, to, type, price, img (optional URL), art (built-in visual)} */
 var FARES = [
-  {from:"Delhi (DEL)", to:"Dubai (DXB)", type:"International", price:15500, img:"", art:"dubai"},
-  {from:"Lucknow (LKO)", to:"Dubai (DXB)", type:"International", price:16799, img:"", art:"plane1"},
-  {from:"Delhi (DEL)", to:"Bangkok (BKK)", type:"International", price:10200, img:"", art:"island"},
-  {from:"Delhi (DEL)", to:"Singapore (SIN)", type:"International", price:900, img:"", art:"city"},
-  {from:"Lucknow (LKO)", to:"Mumbai (BOM)", type:"Domestic", price:4900, img:"", art:"plane2"},
-  {from:"Gorakhpur (GOP)", to:"Delhi (DEL)", type:"Domestic", price:4300, img:"", art:"plane3"},
-  {from:"Delhi (DEL)", to:"Goa (GOI)", type:"Domestic", price:5200, img:"", art:"beach"}
+  {from:"Lucknow (LKO)", to:"Abu Dhabi (AUH)", type:"International", price:24999, img:"", art:"dubai"},
+  {from:"Lucknow (LKO)", to:"Dubai (DXB)", type:"International", price:25699, img:"", art:"plane1"},
+  {from:"Gorakhpur (GOP)", to:"Sharjah (SHJ)", type:"International", price:27199, img:"", art:"island"},
+  {from:"Delhi (DEL)", to:"Sharjah (SHJ)", type:"International", price:27999, img:"", art:"city"},
+  {from:"Sharjah (SHJ)", to:"Varanasi (VNS)", type:"International", price:27999, img:"", art:"plane2"},
+  {from:"Dubai (DXB)", to:"Lucknow (LKO)", type:"International", price:27999, img:"", art:"plane3"},
+  {from:"Lucknow (LKO)", to:"Ras Al Khaimah (RKT)", type:"International", price:24999, img:"", art:"beach"}
 ];
 
-/* 20 Visa Destinations — first 5 match your exact reference screenshot!
+/* 12 Visa Destinations — first 5 match your exact reference screenshot!
    `base` = Atlys fare in ₹. Website adds CONFIG.visaMarkup (₹2,000) automatically.
    Put your photo link inside `img:""` anytime to replace the built-in scenic artwork. */
 var VISA = [
-  {country:"United Arab Emirates", flag:"🇦🇪", region:"gulf", type:"E-VISA", valid:"60 DAYS", stay:"30 Days", entry:"Single Entry", days:2, proc:"2 Days", appoint:false, base:8475, img:"", art:"dubai", docs:["Passport front & back scan (6+ months valid)","Passport-size white background photo","Confirmed return flight (we can assist)"]},
-  {country:"Oman", flag:"🇴🇲", region:"gulf", type:"E-VISA", valid:"90 DAYS", stay:"30 Days", entry:"Single Entry", days:3, proc:"2–3 Days", appoint:false, base:3948, img:"", art:"oman", docs:["Passport front & back scan","Passport-size digital photo","Hotel booking & return ticket"]},
-  {country:"Jordan", flag:"🇯🇴", region:"gulf", type:"E-VISA", valid:"90 DAYS", stay:"30 Days", entry:"Single Entry", days:4, proc:"3–4 Days", appoint:false, base:7643, img:"", art:"jordan", docs:["Passport bio page (6+ months valid)","Digital photo","Travel itinerary & hotel voucher"]},
-  {country:"Greece", flag:"🇬🇷", region:"west", type:"STICKER", valid:"1 MONTHS", stay:"Up to 30 Days", entry:"Single/Multi", days:15, proc:"15 Working Days", appoint:true, base:7788, img:"", art:"greece", docs:["Original Passport & Photos","Travel insurance (min €30,000)","Bank statement (6 months), ITR & cover letter"]},
-  {country:"Seychelles", flag:"🇸🇨", region:"asia", type:"E-VISA", valid:"30 DAYS", stay:"30 Days", entry:"Single Entry", days:2, proc:"1–2 Days", appoint:false, base:2262, img:"", art:"beach", docs:["Valid Passport copy","Digital selfie/photo","Hotel booking & return flight"]},
-  {country:"Saudi Arabia", flag:"🇸🇦", region:"gulf", type:"E-VISA", valid:"1 YEAR", stay:"90 Days", entry:"Multiple Entry", days:4, proc:"3–4 Days", appoint:false, base:0, img:"", art:"jordan", docs:["Valid Passport (6+ months)","Passport-size photo","Hotel & flight details"]},
-  {country:"Qatar", flag:"🇶🇦", region:"gulf", type:"E-VISA", valid:"30 DAYS", stay:"30 Days", entry:"Single Entry", days:4, proc:"3–5 Days", appoint:false, base:0, img:"", art:"dubai", docs:["Passport copy (6+ months valid)","Photo","Hotel booking & return ticket"]},
-  {country:"Thailand", flag:"🇹🇭", region:"asia", type:"E-VISA", valid:"90 DAYS", stay:"30–60 Days", entry:"Single Entry", days:3, proc:"2–4 Days", appoint:false, base:0, img:"", art:"island", docs:["Valid Passport","Photo","Flight tickets & hotel voucher"]},
-  {country:"Singapore", flag:"🇸🇬", region:"asia", type:"E-VISA", valid:"2 YEARS", stay:"30 Days", entry:"Multiple Entry", days:5, proc:"4–5 Working Days", appoint:false, base:0, img:"", art:"city", docs:["Original Passport","2 Photos (matt finish, 35x45mm)","Bank statement (3 months) & ITR / NOC"]},
-  {country:"Malaysia", flag:"🇲🇾", region:"asia", type:"E-VISA", valid:"90 DAYS", stay:"30 Days", entry:"Single Entry", days:2, proc:"1–2 Days", appoint:false, base:0, img:"", art:"city", docs:["Passport copy","Photo","Return flight & hotel booking"]},
-  {country:"Vietnam", flag:"🇻🇳", region:"asia", type:"E-VISA", valid:"30 DAYS", stay:"30 Days", entry:"Single Entry", days:4, proc:"3–4 Working Days", appoint:false, base:0, img:"", art:"island", docs:["Passport bio page scan","Passport-size photo (no glasses)","Travel dates & entry port"]},
-  {country:"Indonesia (Bali)", flag:"🇮🇩", region:"asia", type:"E-VISA", valid:"90 DAYS", stay:"30 Days", entry:"Single Entry", days:2, proc:"1–2 Days", appoint:false, base:0, img:"", art:"beach", docs:["Passport scan (6+ months valid)","Digital photo","Return flight ticket"]},
-  {country:"Sri Lanka", flag:"🇱🇰", region:"asia", type:"E-VISA", valid:"180 DAYS", stay:"30 Days", entry:"Double Entry", days:2, proc:"1–2 Days", appoint:false, base:0, img:"", art:"beach", docs:["Passport bio page","Email & travel dates","Return flight details"]},
-  {country:"Cambodia", flag:"🇰🇭", region:"asia", type:"E-VISA", valid:"90 DAYS", stay:"30 Days", entry:"Single Entry", days:3, proc:"2–3 Days", appoint:false, base:0, img:"", art:"jordan", docs:["Passport copy","Digital photo","Hotel booking"]},
-  {country:"Japan", flag:"🇯🇵", region:"asia", type:"STICKER", valid:"90 DAYS", stay:"15–30 Days", entry:"Single Entry", days:7, proc:"5–7 Working Days", appoint:true, base:0, img:"", art:"city", docs:["Passport & Photo","Bank statement (6 months) & ITR","Cover letter, flight & hotel itinerary"]},
-  {country:"South Korea", flag:"🇰🇷", region:"asia", type:"STICKER", valid:"90 DAYS", stay:"30 Days", entry:"Single Entry", days:10, proc:"8–10 Working Days", appoint:true, base:0, img:"", art:"city", docs:["Original Passport & Photo","Bank statement & ITR (3 years)","Employment / Business proof"]},
-  {country:"Turkey", flag:"🇹🇷", region:"west", type:"E-VISA", valid:"180 DAYS", stay:"30 Days", entry:"Single Entry", days:5, proc:"3–7 Days", appoint:false, base:0, img:"", art:"oman", docs:["Passport & Photo","Valid US/UK/Schengen visa (for e-Visa) or bank docs","Flight & hotel booking"]},
-  {country:"United Kingdom", flag:"🇬🇧", region:"west", type:"STICKER", valid:"6 MONTHS", stay:"180 Days", entry:"Multiple Entry", days:15, proc:"15–20 Working Days", appoint:true, base:0, img:"", art:"greece", docs:["Passport & Biometric appointment","6 months bank statement & ITR","Employment / Business proof & cover letter"]},
-  {country:"USA", flag:"🇺🇸", region:"west", type:"STICKER", valid:"10 YEARS", stay:"Up to 180 Days", entry:"Multiple Entry", days:30, proc:"Appointment Based", appoint:true, base:0, img:"", art:"city", docs:["Valid Passport","DS-160 Form & Interview scheduling","Financial & employment ties"]},
-  {country:"Australia", flag:"🇦🇺", region:"west", type:"E-VISA", valid:"1 YEAR", stay:"3 Months", entry:"Multiple Entry", days:15, proc:"15–20 Days", appoint:false, base:0, img:"", art:"beach", docs:["Passport & Photo","Bank statement, ITR & salary slips","Cover letter & travel plan"]}
+  {country:"United Arab Emirates", flag:"🇦🇪", region:"gulf", type:"E-VISA", valid:"60 DAYS", stay:"30 Days", entry:"Single Entry", days:12, proc:"12 Days", appoint:false, base:8475, img:"", art:"dubai", docs:["Passport front & back scan (6+ months valid)","Passport-size white background photo","Confirmed return flight (we can assist)"]},
+  {country:"Oman", flag:"🇴🇲", region:"gulf", type:"E-VISA", valid:"90 DAYS", stay:"30 Days", entry:"Single Entry", days:7, proc:"5–7 Days", appoint:false, base:3948, img:"", art:"oman", docs:["Passport front & back scan","Passport-size digital photo","Hotel booking & return ticket"]},
+  {country:"Saudi Arabia", flag:"🇸🇦", region:"gulf", type:"E-VISA", valid:"1 YEAR", stay:"90 Days", entry:"Multiple Entry", days:7, proc:"6–7 Days", appoint:false, base:0, img:"", art:"jordan", docs:["Valid Passport (6+ months)","Passport-size photo","Hotel & flight details"]},
+  {country:"Qatar", flag:"🇶🇦", region:"gulf", type:"E-VISA", valid:"30 DAYS", stay:"30 Days", entry:"Single Entry", days:7, proc:"7–9 Days", appoint:false, base:0, img:"", art:"dubai", docs:["Passport copy (6+ months valid)","Photo","Hotel booking & return ticket"]},
+  {country:"Thailand", flag:"🇹🇭", region:"asia", type:"E-VISA", valid:"90 DAYS", stay:"30–60 Days", entry:"Single Entry", days:5, proc:"5–7 Days", appoint:false, base:0, img:"", art:"island", docs:["Valid Passport","Photo","Flight tickets & hotel voucher"]},
+  {country:"Singapore", flag:"🇸🇬", region:"asia", type:"E-VISA", valid:"2 YEARS", stay:"30 Days", entry:"Multiple Entry", days:10, proc:"8–10 Working Days", appoint:false, base:0, img:"", art:"city", docs:["Original Passport","2 Photos (matt finish, 35x45mm)","Bank statement (3 months) & ITR / NOC"]},
+  {country:"Malaysia", flag:"🇲🇾", region:"asia", type:"E-VISA", valid:"90 DAYS", stay:"30 Days", entry:"Single Entry", days:5, proc:"5–7 Days", appoint:false, base:0, img:"", art:"city", docs:["Passport copy","Photo","Return flight & hotel booking"]},
+  {country:"Vietnam", flag:"🇻🇳", region:"asia", type:"E-VISA", valid:"30 DAYS", stay:"30 Days", entry:"Single Entry", days:6, proc:"5–6 Working Days", appoint:false, base:0, img:"", art:"island", docs:["Passport bio page scan","Passport-size photo (no glasses)","Travel dates & entry port"]},
+  {country:"Indonesia (Bali)", flag:"🇮🇩", region:"asia", type:"E-VISA", valid:"90 DAYS", stay:"30 Days", entry:"Single Entry", days:5, proc:"5–7 Days", appoint:false, base:0, img:"", art:"beach", docs:["Passport scan (6+ months valid)","Digital photo","Return flight ticket"]},
+  {country:"Sri Lanka", flag:"🇱🇰", region:"asia", type:"E-VISA", valid:"180 DAYS", stay:"30 Days", entry:"Double Entry", days:4, proc:"4–6 Days", appoint:false, base:0, img:"", art:"beach", docs:["Passport bio page","Email & travel dates","Return flight details"]},
+  {country:"Cambodia", flag:"🇰🇭", region:"asia", type:"E-VISA", valid:"90 DAYS", stay:"30 Days", entry:"Single Entry", days:6, proc:"6–10 Days", appoint:false, base:0, img:"", art:"jordan", docs:["Passport copy","Digital photo","Hotel booking"]},
 ];
 
 var ROUTES = [
