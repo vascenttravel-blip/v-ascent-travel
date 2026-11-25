@@ -638,7 +638,7 @@ var AIRPORTS_WORLD = "DXB|Dubai|Dubai Intl\nDWC|Dubai|Al Maktoum Intl\nSHJ|Sharj
     if($("chkDirect").checked) prefs.push("Direct flights only");
     if($("chkNearbyFrom").checked) prefs.push("Include nearby airports");
     var msg = "Hello V-ASCENT TRAVEL, I want flight details.\nTrip: "+trip+"\nFrom: "+f+"\nTo: "+t+"\nDeparture: "+(dt||"Flexible")+(trip==="Round trip"?"\nReturn: "+rt:"")+"\nTravelers: "+pax.a+" Adult, "+pax.c+" Child, "+pax.i+" Infant\nClass: "+cls.value+"\nBaggage: "+bag+"\nFare type: "+sf+(prefs.length?"\nPreferences: "+prefs.join(", "):"")+"\nPlease share available flights and the best fare.";
-    var w = window.open(wa(msg),"_blank","noopener"); if(!w){ window.location.href = wa(msg); }
+    window.open(wa(msg), "_blank");
   };
 
   /* ================= PORTRAIT VISA CARD BUILDER ================= */
