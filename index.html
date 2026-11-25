@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>V-ASCENT TRAVEL | Flights &amp; Visa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&amp;family=Playfair+Display:wght@600;700&amp;family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+:root{
+  --font-head:"Playfair Display",Georgia,serif;
+  --font-card:"Cinzel","Playfair Display",Georgia,serif;
+  --font-body:"Poppins","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --navy:#05203C;
+  --navy2:#0A1428;
+  --black:#0B0B14;
+  --maroon:#5A0F22;
+  --maroon-d:#2A0812;
+  --gold:#C9A24B;
+  --gold2:#E6C877;
+  --sky:#0062E3;
+  --sky-h:#004FB8;
+  --atlys:#5B4DFF;
+  --atlys-h:#4638E0;
+  --text:#EAEFF8;
+  --mute:#9AA7BF;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--black) radial-gradient(900px 520px at 88% -4%,rgba(110,18,40,.38),transparent 62%) no-repeat;color:var(--text);line-height:1.55}
+h1,h2,h3,.logo-text{font-family:var(--font-head);font-weight:700}
+button,input,select{font-family:inherit}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1280px;margin:0 auto;padding:0 24px}
+[hidden]{display:none !important}
+
+/* Header */
+header{position:sticky;top:0;z-index:40;background:rgba(5,32,60,.96);border-bottom:1px solid rgba(201,162,75,.32);backdrop-filter:blur(8px)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:14px}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-img{height:44px;width:auto;max-width:125px;object-fit:contain;border-radius:7px;border:1px solid rgba(201,162,75,.45);box-shadow:0 2px 10px rgba(0,0,0,.4);display:block}
+.logo-text{font-size:1.3rem;color:var(--gold2);letter-spacing:.04em;white-space:nowrap}
+.nav-right{display:flex;align-items:center;gap:18px}
+nav{display:flex;align-items:center;gap:20px}
+nav a{font-size:.9rem;color:#D6E2F0;font-weight:500;transition:color .2s}
+nav a:hover{color:var(--gold2)}
+.locale-pill{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);padding:6px 12px;border-radius:8px;font-size:.82rem;color:#fff;white-space:nowrap}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#1a1405;font-weight:700;border:0;border-radius:8px;padding:11px 20px;cursor:pointer;font-size:.94rem;transition:transform .15s,opacity .15s}
+.btn:hover{opacity:.92}
+.btn.line{background:none;border:1px solid var(--gold);color:var(--gold2)}
+.btn.sky{background:var(--sky);color:#fff}
+.btn.sky:hover{background:var(--sky-h)}
+.btn.atlys{background:var(--atlys);color:#fff}
+.btn.atlys:hover{background:var(--atlys-h)}
+.btn.wa{background:#25D366;color:#fff}
+.btn.wa:hover{background:#1EBE5D}
+.btn.sm{padding:8px 14px;font-size:.84rem}
+
+/* Hero Slider with Aviation Visuals */
+.hero{position:relative;min-height:clamp(600px,84vh,860px);display:flex;align-items:center;overflow:visible;padding:36px 0 58px}
+.slider-bg{position:absolute;inset:0;overflow:hidden;z-index:0}
+.slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.2s ease}
+.slide.on{opacity:1}
+.slider-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,20,42,.52),rgba(11,11,20,.90))}
+.hero .wrap{position:relative;z-index:2;width:100%}
+.hero h1{font-family:var(--font-body);font-weight:700;font-size:clamp(1.85rem,4vw,2.9rem);max-width:820px;line-height:1.18;margin-bottom:6px;letter-spacing:-.02em}
+.hero p.tag{color:var(--gold2);margin-bottom:20px;font-size:1rem;max-width:660px}
+.dots{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);z-index:3;display:flex;gap:8px}
+.dots button{width:10px;height:10px;border-radius:50%;border:1px solid var(--gold);background:none;cursor:pointer}
+.dots button.on{background:var(--gold)}
+
+/* Mode Pills (Flights / Visa) */
+.mode-pills{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:999px;border:1px solid rgba(255,255,255,.28);background:rgba(5,32,60,.75);color:#fff;font-weight:600;font-size:.94rem;cursor:pointer;transition:all .2s}
+.pill:hover{border-color:rgba(255,255,255,.65);background:rgba(255,255,255,.1)}
+.pill.on.f-pill{background:var(--sky);border-color:var(--sky);color:#fff;box-shadow:0 4px 16px rgba(0,98,227,.45)}
+.pill.on.v-pill{background:var(--atlys);border-color:var(--atlys);color:#fff;box-shadow:0 4px 16px rgba(91,77,255,.45)}
+
+/* ================= SKYSCANNER FLIGHT SEARCH ================= */
+.sky-controls{display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap;align-items:center}
+.sky-select{background:rgba(5,32,60,.85);color:#fff;border:1px solid rgba(255,255,255,.32);border-radius:8px;padding:7px 14px;font-size:.88rem;font-weight:500;cursor:pointer}
+.sky-select option{background:var(--navy);color:#fff}
+
+.sky-bar{display:grid;grid-template-columns:1.3fr 1.3fr .88fr .88fr 1.15fr auto;gap:3px;align-items:stretch;position:relative}
+.sky-field{background:#fff;color:#111236;padding:11px 15px;display:flex;flex-direction:column;justify-content:center;position:relative;min-height:68px;transition:box-shadow .15s}
+.sky-field:focus-within{box-shadow:inset 0 0 0 2px var(--sky);z-index:6}
+.sky-field:first-child{border-radius:12px 0 0 12px}
+.sky-field.last-f{border-radius:0 12px 12px 0}
+.sky-field label{font-size:.73rem;font-weight:600;color:#545860;margin-bottom:2px;display:block}
+.sky-field input[type=text],.sky-field input[type=date]{width:100%;border:0;outline:0;background:transparent;color:#111236;font-size:.94rem;font-weight:500}
+.sky-field input::placeholder{color:#78808C;font-weight:400}
+.sky-field input:disabled{opacity:.4;cursor:not-allowed}
+.sky-field .tr-btn{width:100%;border:0;outline:0;background:transparent;color:#111236;font-size:.92rem;font-weight:600;text-align:left;cursor:pointer;padding:2px 0}
+
+.swap-wrap{position:relative}
+.swap-btn{position:absolute;right:-18px;top:50%;transform:translateY(-50%);z-index:8;width:34px;height:34px;border-radius:50%;border:2px solid var(--navy);background:#fff;color:#111236;font-size:1rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.28)}
+.swap-btn:hover{background:#EAF2FF;color:var(--sky)}
+
+.sky-search-btn{background:var(--sky);color:#fff;border:0;border-radius:12px;padding:0 30px;font-size:1.02rem;font-weight:700;cursor:pointer;margin-left:6px;min-height:68px;transition:background .2s}
+.sky-search-btn:hover{background:var(--sky-h)}
+
+/* Airport Autocomplete Dropdown */
+.ac-list{position:absolute;top:calc(100% + 6px);left:0;width:340px;max-width:90vw;max-height:310px;overflow-y:auto;background:#fff;color:#111236;border-radius:12px;box-shadow:0 14px 36px rgba(0,0,0,.45);border:1px solid #DCE3EE;z-index:50;padding:6px 0}
+.ac-item{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;cursor:pointer;transition:background .12s}
+.ac-item:hover{background:#F0F6FF}
+.ac-city{font-size:.9rem;font-weight:600;color:#111236;line-height:1.25}
+.ac-air{font-size:.76rem;color:#5C6675}
+.ac-code{font-size:.78rem;font-weight:700;background:#EAF2FF;color:var(--sky);padding:3px 8px;border-radius:6px;flex-shrink:0}
+
+/* Travellers Dropdown */
+.panel{position:absolute;z-index:50;top:calc(100% + 8px);right:0;width:300px;background:#fff;color:#111236;border:1px solid #DCE3EE;border-radius:14px;padding:18px;box-shadow:0 14px 36px rgba(0,0,0,.45)}
+.cnt{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;font-size:.92rem;font-weight:600}
+.cnt small{display:block;color:#626971;font-size:.75rem;font-weight:400}
+.cnt .n{display:inline-block;min-width:28px;text-align:center;font-weight:700}
+.cnt button{width:32px;height:32px;border-radius:50%;border:1px solid #C2CBD6;background:#F4F6F9;color:#111236;cursor:pointer;font-size:1.1rem;font-weight:700}
+.cnt button:hover{border-color:var(--sky);color:var(--sky)}
+.panel label{color:#545860;font-size:.78rem;font-weight:600;display:block;margin-bottom:5px}
+.panel select{width:100%;padding:9px 10px;border-radius:8px;border:1px solid #C2CBD6;background:#fff;color:#111236;font-weight:500}
+
+/* Checkboxes & Routes */
+.sky-checks{display:flex;flex-wrap:wrap;gap:12px 24px;margin-top:14px;font-size:.88rem;color:#fff}
+.sky-checks label{display:inline-flex;align-items:center;gap:7px;cursor:pointer}
+.sky-checks input[type=checkbox]{width:16px;height:16px;accent-color:var(--sky);cursor:pointer}
+.chips{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;margin-top:12px;font-size:.84rem;color:var(--mute)}
+.chips label{display:inline-flex;align-items:center;gap:5px;color:var(--text);cursor:pointer}
+.routes{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.routes button{background:rgba(10,20,40,.85);border:1px solid rgba(201,162,75,.45);color:var(--text);border-radius:20px;padding:6px 14px;cursor:pointer;font-size:.82rem}
+.routes button:hover{border-color:var(--gold2);background:rgba(201,162,75,.14)}
+
+/* ================= VISUAL FLIGHT DEAL CARDS ================= */
+.flight-visual-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:18px;margin-bottom:28px}
+.fcard{background:#121324;border:1px solid rgba(201,162,75,.3);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,border-color .2s}
+.fcard:hover{transform:translateY(-3px);border-color:var(--gold2)}
+.fcard-img{height:155px;background-size:cover;background-position:center;position:relative;display:flex;align-items:flex-end;padding:12px 14px}
+.fcard-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,12,26,.1),rgba(11,11,20,.88))}
+.fcard-badge{position:relative;z-index:2;background:rgba(0,98,227,.9);color:#fff;font-size:.72rem;font-weight:600;padding:3px 10px;border-radius:999px}
+.fcard-body{padding:15px 16px;display:flex;flex-direction:column;gap:10px;flex:1;justify-content:space-between}
+.fcard-route{font-size:1.05rem;font-weight:700;color:#fff}
+.fcard-meta{font-size:.8rem;color:var(--mute)}
+.fcard-foot{display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,.08);padding-top:10px}
+.fcard-price{font-size:1.15rem;font-weight:700;color:var(--gold2)}
+
+/* ================= PORTRAIT VISA CARDS (EXACT SCREENSHOT STYLE) ================= */
+.atlys-shell{background:rgba(15,14,28,.94);border:1px solid rgba(201,162,75,.38);border-radius:20px;padding:24px;box-shadow:0 18px 44px rgba(0,0,0,.45)}
+.atlys-top{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-bottom:16px}
+.atlys-search-wrap{flex:1;min-width:240px;position:relative}
+.atlys-search{width:100%;padding:13px 16px 13px 42px;border-radius:12px;border:2px solid rgba(91,77,255,.45);background:#fff;color:#111236;font-size:.95rem;font-weight:500;outline:0}
+.atlys-search:focus{border-color:var(--atlys)}
+.atlys-search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:1.05rem;color:#5B4DFF}
+
+.atlys-filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.af-btn{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);color:#D6E2F0;padding:6px 14px;border-radius:999px;font-size:.82rem;font-weight:500;cursor:pointer;transition:all .15s}
+.af-btn:hover{border-color:var(--gold2)}
+.af-btn.on{background:var(--atlys);border-color:var(--atlys);color:#fff}
+
+/* 5-column portrait card row matching user reference screenshot */
+.pvisa-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+.pvisa-wrap{display:flex;flex-direction:column;cursor:pointer}
+.pvisa-card{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:3/4.35;min-height:290px;display:flex;flex-direction:column;justify-content:flex-end;background-size:cover;background-position:center;box-shadow:0 12px 28px rgba(0,0,0,.42);border:1px solid rgba(255,255,255,.14);transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease}
+.pvisa-wrap:hover .pvisa-card{transform:translateY(-5px);box-shadow:0 18px 36px rgba(0,0,0,.6);border-color:var(--gold)}
+.pvisa-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 34%,rgba(12,16,20,.65) 56%,rgba(12,16,20,.95) 76%,rgba(10,13,17,.99) 100%);pointer-events:none}
+.pvisa-content{position:relative;z-index:2;padding:16px 14px 16px;text-align:center}
+.pvisa-flag{width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.16);backdrop-filter:blur(4px);display:inline-flex;align-items:center;justify-content:center;font-size:1.15rem;margin-bottom:8px;box-shadow:0 3px 10px rgba(0,0,0,.45)}
+.pvisa-name{font-family:var(--font-card);font-size:1.05rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#fff;line-height:1.22;min-height:2.45em;display:flex;align-items:center;justify-content:center;text-shadow:0 2px 8px rgba(0,0,0,.6)}
+.pvisa-line{height:1px;background:rgba(255,255,255,.18);margin:10px 0 11px}
+.pvisa-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;text-align:center}
+.pvisa-col span{display:block;font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:3px;font-weight:600}
+.pvisa-col strong{display:block;font-size:.73rem;font-weight:700;color:#fff;white-space:nowrap}
+.pvisa-col.fee strong{color:var(--gold2)}
+.pvisa-below{margin-top:9px;padding:0 4px;font-size:.78rem;color:#B8C4D9;display:flex;align-items:center;justify-content:space-between;gap:6px}
+.pvisa-below b{color:#EAEFF8;font-weight:600}
+
+/* Visa Detail Modal */
+.modal-bg{position:fixed;inset:0;background:rgba(5,8,18,.84);z-index:100;display:flex;align-items:center;justify-content:center;padding:18px;backdrop-filter:blur(5px)}
+.modal{background:#121324;border:1px solid rgba(201,162,75,.45);border-radius:18px;max-width:680px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 24px 60px rgba(0,0,0,.7);color:var(--text)}
+.modal-head{padding:20px 24px;border-bottom:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:space-between;gap:12px}
+.modal-head h3{font-family:var(--font-body);font-size:1.35rem;color:#fff}
+.modal-close{background:rgba(255,255,255,.1);color:#fff;border:0;width:34px;height:34px;border-radius:50%;font-size:1.2rem;cursor:pointer}
+.modal-body{padding:22px 24px}
+.m-guarantee{background:linear-gradient(135deg,rgba(91,77,255,.22),rgba(16,185,129,.14));border:1px solid rgba(91,77,255,.45);border-radius:12px;padding:14px 16px;margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.m-guarantee strong{color:#A5B4FC;font-size:.98rem}
+.m-badge{background:rgba(11,11,20,.78);color:#6EE7B7;border:1px solid rgba(110,237,183,.35);font-size:.74rem;font-weight:600;padding:4px 10px;border-radius:999px}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:10px;margin-bottom:20px}
+.m-stat{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:10px;padding:11px 12px}
+.m-stat span{display:block;font-size:.73rem;color:var(--mute);margin-bottom:2px}
+.m-stat b{font-size:.9rem;color:#fff}
+.m-sec-title{font-size:.95rem;font-weight:700;color:var(--gold2);margin:16px 0 8px}
+.m-docs{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;margin-bottom:18px}
+.m-docs li{background:rgba(255,255,255,.04);padding:8px 12px;border-radius:8px;font-size:.84rem;color:#E2E8F0}
+.m-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-bottom:20px}
+.m-step{background:rgba(90,15,34,.35);border:1px solid rgba(201,162,75,.25);border-radius:10px;padding:12px;font-size:.82rem}
+.m-step b{display:block;color:var(--gold2);margin-bottom:3px}
+.m-price-box{background:#0B0B14;border:1px solid rgba(201,162,75,.35);border-radius:12px;padding:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+.m-price-val{font-size:1.45rem;font-weight:700;color:var(--gold2)}
+.m-price-note{font-size:.76rem;color:var(--mute)}
+.m-actions{display:flex;gap:10px;flex-wrap:wrap}
+
+/* Sections */
+.note{font-size:.8rem;color:var(--mute);margin-top:10px}
+section{padding:64px 0}
+h2{font-size:1.9rem;color:var(--gold2);margin-bottom:6px}
+.sub{color:var(--mute);margin-bottom:26px}
+.fares{background:linear-gradient(180deg,var(--maroon-d),var(--black))}
+.tbl{width:100%;border-collapse:collapse}
+.tblbox{overflow-x:auto;border:1px solid rgba(201,162,75,.3);border-radius:12px;background:var(--black)}
+.tbl th,.tbl td{padding:13px 16px;text-align:left;border-bottom:1px solid #1c2a47;white-space:nowrap}
+.tbl th{color:var(--gold);font-weight:600;font-size:.88rem}
+.price{color:var(--gold2);font-weight:700}
+.visa-sec{background:linear-gradient(180deg,var(--black),var(--maroon-d))}
+.contact .box{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.card{background:linear-gradient(160deg,#16132a,var(--maroon-d));border:1px solid rgba(201,162,75,.28);border-radius:14px;padding:22px}
+.card h3{font-size:1.2rem;margin-bottom:6px}
+.card p{color:var(--mute);font-size:.94rem;margin-bottom:14px}
+footer{border-top:1px solid rgba(201,162,75,.3);padding:22px 0;text-align:center;color:var(--mute);font-size:.88rem}
+.fab{position:fixed;right:18px;bottom:18px;z-index:45;background:#25D366;color:#fff;border-radius:50px;padding:13px 18px;font-weight:700;box-shadow:0 6px 18px rgba(0,0,0,.5)}
+
+/* Responsive */
+@media(max-width:1160px){
+  .pvisa-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:980px){
+  .sky-bar{grid-template-columns:1fr 1fr;gap:8px}
+  .sky-field,.sky-field:first-child,.sky-field.last-f{border-radius:10px}
+  .swap-btn{right:10px;top:auto;bottom:-22px;transform:rotate(90deg)}
+  .sky-search-btn{grid-column:1 / -1;margin-left:0;min-height:54px}
+}
+@media(max-width:720px){
+  .pvisa-grid{grid-template-columns:repeat(2,1fr);gap:14px}
+  .pvisa-card{min-height:250px}
+}
+@media(max-width:680px){
+  nav,.locale-pill{display:none}
+  .logo-img{height:36px}
+  .logo-text{font-size:1.1rem}
+  .sky-bar{grid-template-columns:1fr}
+  .panel{left:0;right:auto;width:100%}
+  .atlys-shell{padding:16px}
+}
+@media(max-width:440px){
+  .pvisa-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header><div class="wrap">
+  <a class="logo" href="#top" id="brandLogo">
+    <img class="logo-img" id="logoImgEl" alt="V-ASCENT TRAVEL Logo">
+    <span class="logo-text" id="logoTextEl">V-ASCENT TRAVEL</span>
+  </a>
+  <div class="nav-right">
+    <nav>
+      <a href="#top" id="navFlights">Flights</a>
+      <a href="#top" id="navVisa">Visa</a>
+      <a href="#fares">Best Fares</a>
+      <a href="#visa">All Visas</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <span class="locale-pill">🇮🇳 India · ₹ INR</span>
+  </div>
+</div></header>
+
+<main id="top">
+<div class="hero">
+  <div class="slider-bg">
+    <div class="slide on" id="sl0"></div>
+    <div class="slide" id="sl1"></div>
+    <div class="slide" id="sl2"></div>
+  </div>
+
+  <div class="wrap">
+    <!-- Skyscanner-style Mode Switcher -->
+    <div class="mode-pills" role="tablist">
+      <button type="button" class="pill f-pill on" id="modeFlights">✈ Flights</button>
+      <button type="button" class="pill v-pill" id="modeVisa">🛂 Visa</button>
+    </div>
+
+    <h1 id="heroTitle">Millions of cheap flights. One simple search.</h1>
+    <p class="tag" id="heroTag">Best fares on domestic and international flights. Instant WhatsApp confirmation.</p>
+
+    <!-- ================= FLIGHTS PANEL (SKYSCANNER STYLE) ================= -->
+    <div id="flightsBox">
+      <div class="sky-controls">
+        <select class="sky-select" id="tripType" aria-label="Trip type">
+          <option value="Round trip">Roundtrip</option>
+          <option value="One way">One way</option>
+        </select>
+        <select class="sky-select" id="bagType" aria-label="Baggage preference">
+          <option value="Standard baggage">Bags: Standard</option>
+          <option value="Cabin bag only (Lowest fare)">Cabin bag only</option>
+          <option value="Extra check-in baggage">Extra check-in bag</option>
+        </select>
+      </div>
+
+      <div class="sky-bar">
+        <div class="sky-field swap-wrap">
+          <label for="qFrom">From</label>
+          <input id="qFrom" type="text" placeholder="Country, city or airport" autocomplete="off">
+          <div class="ac-list" id="acFrom" hidden></div>
+          <button class="swap-btn" id="qSwap" type="button" aria-label="Swap From and To">⇄</button>
+        </div>
+
+        <div class="sky-field">
+          <label for="qTo">To</label>
+          <input id="qTo" type="text" placeholder="Country, city or airport" autocomplete="off">
+          <div class="ac-list" id="acTo" hidden></div>
+        </div>
+
+        <div class="sky-field">
+          <label for="qDate">Depart</label>
+          <input id="qDate" type="date">
+        </div>
+
+        <div class="sky-field">
+          <label for="qRet">Return</label>
+          <input id="qRet" type="date">
+        </div>
+
+        <div class="sky-field last-f">
+          <label for="qTrav">Travelers and cabin class</label>
+          <button class="tr-btn" id="qTrav" type="button">1 Adult, Economy</button>
+          <div class="panel" id="panel" hidden>
+            <div class="cnt"><div>Adults<small>12+ years</small></div><div><button type="button" data-k="a" data-d="-1">−</button><span class="n" id="nA">1</span><button type="button" data-k="a" data-d="1">+</button></div></div>
+            <div class="cnt"><div>Children<small>2 to 12 years</small></div><div><button type="button" data-k="c" data-d="-1">−</button><span class="n" id="nC">0</span><button type="button" data-k="c" data-d="1">+</button></div></div>
+            <div class="cnt"><div>Infants<small>0 to 2 years</small></div><div><button type="button" data-k="i" data-d="-1">−</button><span class="n" id="nI">0</span><button type="button" data-k="i" data-d="1">+</button></div></div>
+            <label for="qCls">Cabin Class</label>
+            <select id="qCls"><option>Economy</option><option>Premium Economy</option><option>Business</option><option>First Class</option></select>
+            <button type="button" class="btn sky sm" id="qDone" style="margin-top:14px;width:100%">Apply</button>
+          </div>
+        </div>
+
+        <button class="sky-search-btn" id="qGo" type="button">Search</button>
+      </div>
+
+      <div class="sky-checks">
+        <label><input type="checkbox" id="chkNearbyFrom"> Add nearby airports</label>
+        <label><input type="checkbox" id="chkDirect"> Direct flights</label>
+      </div>
+
+      <div class="chips"><span>Special fares:</span>
+        <label><input type="radio" name="sf" value="Regular" checked>Regular</label>
+        <label><input type="radio" name="sf" value="Student">Student</label>
+        <label><input type="radio" name="sf" value="Senior Citizen">Senior Citizen</label>
+        <label><input type="radio" name="sf" value="Armed Forces">Armed Forces</label>
+        <label><input type="radio" name="sf" value="Doctor and Nurse">Doctor &amp; Nurse</label>
+      </div>
+
+      <div class="routes" id="routes" aria-label="Top flight routes"></div>
+      <p class="note">Type any city or airport code (e.g. DEL, DXB, LKO, GOP, BKK). Clicking Search opens WhatsApp with your complete flight details.</p>
+    </div>
+
+    <!-- ================= VISA PANEL (PORTRAIT CARDS LIKE SCREENSHOT) ================= -->
+    <div id="visaBox" class="atlys-shell" hidden>
+      <div class="atlys-top">
+        <div class="atlys-search-wrap">
+          <span class="atlys-search-icon">🔍</span>
+          <input type="text" id="visaSearch" class="atlys-search" placeholder="Search country (e.g. UAE, Oman, Jordan, Greece, Seychelles)...">
+        </div>
+      </div>
+
+      <div class="atlys-filters" id="visaFilters">
+        <button type="button" class="af-btn on" data-f="all">All 20 Visas</button>
+        <button type="button" class="af-btn" data-f="e-visa">E-Visa</button>
+        <button type="button" class="af-btn" data-f="gulf">Gulf &amp; Middle East</button>
+        <button type="button" class="af-btn" data-f="asia">Asia &amp; Islands</button>
+        <button type="button" class="af-btn" data-f="west">Europe, UK &amp; USA</button>
+      </div>
+
+      <div class="pvisa-grid" id="visaHeroCards"></div>
+      <p class="note">Click any visa card to view required documents, validity, step-by-step process &amp; apply directly on WhatsApp.</p>
+    </div>
+  </div>
+  <div class="dots" id="dots"></div>
+</div>
+
+<!-- TODAY'S BEST FARES (VISUAL FLIGHT CARDS + RATE TABLE) -->
+<section class="fares" id="fares"><div class="wrap">
+  <h2>Today’s Best Flight Fares</h2>
+  <p class="sub" id="fareSub"></p>
+  <div class="flight-visual-grid" id="flightVisualGrid"></div>
+  <div class="tblbox"><table class="tbl"><thead><tr><th>Route</th><th>Type</th><th>Starting fare</th><th></th></tr></thead><tbody id="fareBody"></tbody></table></div>
+  <p class="note">Fares change daily and are subject to availability. Confirm the final fare on WhatsApp.</p>
+</div></section>
+
+<!-- FEATURED VISA CARDS SHOWCASE (ALWAYS VISIBLE BELOW TOO) -->
+<section class="visa-sec" id="visa"><div class="wrap">
+  <h2>Visa Assistance (20 Destinations)</h2>
+  <p class="sub">Portrait visa guide with Type, Validity &amp; Fees. Click any country for full rules &amp; WhatsApp application.</p>
+  <div class="pvisa-grid" id="visaShowcaseGrid" style="margin-bottom:28px"></div>
+  <p style="display:flex;gap:12px;flex-wrap:wrap">
+    <button type="button" class="btn line" id="jumpVisaCards">Browse Visa Cards ↑</button>
+  </p>
+</div></section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact"><div class="wrap">
+  <h2>Contact V-ASCENT TRAVEL</h2>
+  <p class="sub">Tell us where you want to go. We will handle flights, visas, and support.</p>
+  <div class="box">
+    <div class="card"><h3>Call</h3><p id="cPhone"></p><a class="btn sm" id="cCall">Call now</a></div>
+    <div class="card"><h3>WhatsApp</h3><p>Fastest way to get live flight fares &amp; visa quotes.</p><a class="btn wa sm" id="cWa" target="_blank" rel="noopener">Chat with us</a></div>
+    <div class="card"><h3>Email</h3><p id="cMail"></p><a class="btn sm" id="cMailBtn">Send email</a></div>
+    <div class="card"><h3>Office</h3><p id="cAddr"></p></div>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">&copy; <span id="yr"></span> V-ASCENT TRAVEL. All rights reserved.</div></footer>
+<a class="fab" id="fab" target="_blank" rel="noopener">💬 WhatsApp us</a>
+
+<!-- ATLYS-STYLE VISA DETAIL MODAL -->
+<div class="modal-bg" id="visaModalBg" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+    <div class="modal-head">
+      <h3 id="mTitle">Visa Details</h3>
+      <button type="button" class="modal-close" id="mClose" aria-label="Close">×</button>
+    </div>
+    <div class="modal-body" id="mBody"></div>
+  </div>
+</div>
+
+<script>
+/* =====================================================
+   EDIT HERE: change only this block. Do not touch below.
+   ===================================================== */
+var CONFIG = {
+  logoImg: "data:image/jpeg;base64,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",
+  phoneIntl: "916390630017",
+  phoneShow: "+91 63906 30017",
+  email: "vascenttravel@gmail.com",
+  address: "Deoria, Uttar Pradesh 274001",
+  visaMarkup: 2000,                    // ₹2,000 added automatically on top of every base visa fare
+  faresUpdated: "25 Nov 2026"
+};
+
+/* Slider: Put your own flight image link in img:"" — built-in aviation artwork shows automatically if empty */
+var SLIDES = [
+  {img:"", art:"plane1", title:"Millions of cheap flights. One simple search.", tag:"Best fares on domestic and international flights. Instant WhatsApp confirmation."},
+  {img:"", art:"plane2", title:"Every Indian city. Every major route.", tag:"Dubai, Saudi Arabia, Bangkok, Singapore, Kathmandu and more — one message away."},
+  {img:"", art:"plane3", title:"Visas on time, handled end-to-end.", tag:"Detailed visa cards, transparent pricing & fast WhatsApp support."}
+];
+
+/* Today's Best Fares: {from, to, type, price, img (optional URL), art (built-in visual)} */
+var FARES = [
+  {from:"Delhi (DEL)", to:"Dubai (DXB)", type:"International", price:14500, img:"", art:"dubai"},
+  {from:"Lucknow (LKO)", to:"Dubai (DXB)", type:"International", price:16800, img:"", art:"plane1"},
+  {from:"Delhi (DEL)", to:"Bangkok (BKK)", type:"International", price:13200, img:"", art:"island"},
+  {from:"Delhi (DEL)", to:"Singapore (SIN)", type:"International", price:17900, img:"", art:"city"},
+  {from:"Lucknow (LKO)", to:"Mumbai (BOM)", type:"Domestic", price:4900, img:"", art:"plane2"},
+  {from:"Gorakhpur (GOP)", to:"Delhi (DEL)", type:"Domestic", price:4300, img:"", art:"plane3"},
+  {from:"Delhi (DEL)", to:"Goa (GOI)", type:"Domestic", price:5200, img:"", art:"beach"}
+];
+
+/* 20 Visa Destinations — first 5 match your exact reference screenshot!
+   `base` = Atlys fare in ₹. Website adds CONFIG.visaMarkup (₹2,000) automatically.
+   Put your photo link inside `img:""` anytime to replace the built-in scenic artwork. */
+var VISA = [
+  {country:"United Arab Emirates", flag:"🇦🇪", region:"gulf", type:"E-VISA", valid:"60 DAYS", stay:"30 Days", entry:"Single Entry", days:2, proc:"2 Days", appoint:false, base:8475, img:"", art:"dubai", docs:["Passport front & back scan (6+ months valid)","Passport-size white background photo","Confirmed return flight (we can assist)"]},
+  {country:"Oman", flag:"🇴🇲", region:"gulf", type:"E-VISA", valid:"90 DAYS", stay:"30 Days", entry:"Single Entry", days:3, proc:"2–3 Days", appoint:false, base:3948, img:"", art:"oman", docs:["Passport front & back scan","Passport-size digital photo","Hotel booking & return ticket"]},
+  {country:"Jordan", flag:"🇯🇴", region:"gulf", type:"E-VISA", valid:"90 DAYS", stay:"30 Days", entry:"Single Entry", days:4, proc:"3–4 Days", appoint:false, base:7643, img:"", art:"jordan", docs:["Passport bio page (6+ months valid)","Digital photo","Travel itinerary & hotel voucher"]},
+  {country:"Greece", flag:"🇬🇷", region:"west", type:"STICKER", valid:"1 MONTHS", stay:"Up to 30 Days", entry:"Single/Multi", days:15, proc:"15 Working Days", appoint:true, base:7788, img:"", art:"greece", docs:["Original Passport & Photos","Travel insurance (min €30,000)","Bank statement (6 months), ITR & cover letter"]},
+  {country:"Seychelles", flag:"🇸🇨", region:"asia", type:"E-VISA", valid:"30 DAYS", stay:"30 Days", entry:"Single Entry", days:2, proc:"1–2 Days", appoint:false, base:2262, img:"", art:"beach", docs:["Valid Passport copy","Digital selfie/photo","Hotel booking & return flight"]},
+  {country:"Saudi Arabia", flag:"🇸🇦", region:"gulf", type:"E-VISA", valid:"1 YEAR", stay:"90 Days", entry:"Multiple Entry", days:4, proc:"3–4 Days", appoint:false, base:0, img:"", art:"jordan", docs:["Valid Passport (6+ months)","Passport-size photo","Hotel & flight details"]},
+  {country:"Qatar", flag:"🇶🇦", region:"gulf", type:"E-VISA", valid:"30 DAYS", stay:"30 Days", entry:"Single Entry", days:4, proc:"3–5 Days", appoint:false, base:0, img:"", art:"dubai", docs:["Passport copy (6+ months valid)","Photo","Hotel booking & return ticket"]},
+  {country:"Thailand", flag:"🇹🇭", region:"asia", type:"E-VISA", valid:"90 DAYS", stay:"30–60 Days", entry:"Single Entry", days:3, proc:"2–4 Days", appoint:false, base:0, img:"", art:"island", docs:["Valid Passport","Photo","Flight tickets & hotel voucher"]},
+  {country:"Singapore", flag:"🇸🇬", region:"asia", type:"E-VISA", valid:"2 YEARS", stay:"30 Days", entry:"Multiple Entry", days:5, proc:"4–5 Working Days", appoint:false, base:0, img:"", art:"city", docs:["Original Passport","2 Photos (matt finish, 35x45mm)","Bank statement (3 months) & ITR / NOC"]},
+  {country:"Malaysia", flag:"🇲🇾", region:"asia", type:"E-VISA", valid:"90 DAYS", stay:"30 Days", entry:"Single Entry", days:2, proc:"1–2 Days", appoint:false, base:0, img:"", art:"city", docs:["Passport copy","Photo","Return flight & hotel booking"]},
+  {country:"Vietnam", flag:"🇻🇳", region:"asia", type:"E-VISA", valid:"30 DAYS", stay:"30 Days", entry:"Single Entry", days:4, proc:"3–4 Working Days", appoint:false, base:0, img:"", art:"island", docs:["Passport bio page scan","Passport-size photo (no glasses)","Travel dates & entry port"]},
+  {country:"Indonesia (Bali)", flag:"🇮🇩", region:"asia", type:"E-VISA", valid:"90 DAYS", stay:"30 Days", entry:"Single Entry", days:2, proc:"1–2 Days", appoint:false, base:0, img:"", art:"beach", docs:["Passport scan (6+ months valid)","Digital photo","Return flight ticket"]},
+  {country:"Sri Lanka", flag:"🇱🇰", region:"asia", type:"E-VISA", valid:"180 DAYS", stay:"30 Days", entry:"Double Entry", days:2, proc:"1–2 Days", appoint:false, base:0, img:"", art:"beach", docs:["Passport bio page","Email & travel dates","Return flight details"]},
+  {country:"Cambodia", flag:"🇰🇭", region:"asia", type:"E-VISA", valid:"90 DAYS", stay:"30 Days", entry:"Single Entry", days:3, proc:"2–3 Days", appoint:false, base:0, img:"", art:"jordan", docs:["Passport copy","Digital photo","Hotel booking"]},
+  {country:"Japan", flag:"🇯🇵", region:"asia", type:"STICKER", valid:"90 DAYS", stay:"15–30 Days", entry:"Single Entry", days:7, proc:"5–7 Working Days", appoint:true, base:0, img:"", art:"city", docs:["Passport & Photo","Bank statement (6 months) & ITR","Cover letter, flight & hotel itinerary"]},
+  {country:"South Korea", flag:"🇰🇷", region:"asia", type:"STICKER", valid:"90 DAYS", stay:"30 Days", entry:"Single Entry", days:10, proc:"8–10 Working Days", appoint:true, base:0, img:"", art:"city", docs:["Original Passport & Photo","Bank statement & ITR (3 years)","Employment / Business proof"]},
+  {country:"Turkey", flag:"🇹🇷", region:"west", type:"E-VISA", valid:"180 DAYS", stay:"30 Days", entry:"Single Entry", days:5, proc:"3–7 Days", appoint:false, base:0, img:"", art:"oman", docs:["Passport & Photo","Valid US/UK/Schengen visa (for e-Visa) or bank docs","Flight & hotel booking"]},
+  {country:"United Kingdom", flag:"🇬🇧", region:"west", type:"STICKER", valid:"6 MONTHS", stay:"180 Days", entry:"Multiple Entry", days:15, proc:"15–20 Working Days", appoint:true, base:0, img:"", art:"greece", docs:["Passport & Biometric appointment","6 months bank statement & ITR","Employment / Business proof & cover letter"]},
+  {country:"USA", flag:"🇺🇸", region:"west", type:"STICKER", valid:"10 YEARS", stay:"Up to 180 Days", entry:"Multiple Entry", days:30, proc:"Appointment Based", appoint:true, base:0, img:"", art:"city", docs:["Valid Passport","DS-160 Form & Interview scheduling","Financial & employment ties"]},
+  {country:"Australia", flag:"🇦🇺", region:"west", type:"E-VISA", valid:"1 YEAR", stay:"3 Months", entry:"Multiple Entry", days:15, proc:"15–20 Days", appoint:false, base:0, img:"", art:"beach", docs:["Passport & Photo","Bank statement, ITR & salary slips","Cover letter & travel plan"]}
+];
+
+var ROUTES = [
+  ["Delhi (DEL)","Mumbai (BOM)"],["Delhi (DEL)","Lucknow (LKO)"],["Delhi (DEL)","Gorakhpur (GOP)"],
+  ["Lucknow (LKO)","Dubai (DXB)"],["Delhi (DEL)","Dubai (DXB)"],["Mumbai (BOM)","Dubai (DXB)"],
+  ["Delhi (DEL)","Bangkok (BKK)"],["Delhi (DEL)","Kathmandu (KTM)"],["Hyderabad (HYD)","Bengaluru (BLR)"]
+];
+
+var AIRPORTS_IN = "DEL|Delhi|Indira Gandhi Intl\nBOM|Mumbai|Chhatrapati Shivaji Maharaj Intl\nBLR|Bengaluru|Kempegowda Intl\nMAA|Chennai|Chennai Intl\nCCU|Kolkata|Netaji Subhas Chandra Bose Intl\nHYD|Hyderabad|Rajiv Gandhi Intl\nAMD|Ahmedabad|Sardar Vallabhbhai Patel Intl\nPNQ|Pune|Pune Intl\nGOI|Goa|Dabolim\nGOX|Goa|Manohar Intl (Mopa)\nCOK|Kochi|Cochin Intl\nTRV|Thiruvananthapuram|Trivandrum Intl\nCCJ|Kozhikode|Calicut Intl\nCNN|Kannur|Kannur Intl\nLKO|Lucknow|Chaudhary Charan Singh Intl\nGOP|Gorakhpur|Gorakhpur Airport\nVNS|Varanasi|Lal Bahadur Shastri Intl\nIXD|Prayagraj|Prayagraj Airport\nKNU|Kanpur|Chakeri\nAYJ|Ayodhya|Maharishi Valmiki Intl\nAGR|Agra|Kheria\nHDO|Hindon|Ghaziabad Airport\nJAI|Jaipur|Jaipur Intl\nJDH|Jodhpur|Jodhpur Airport\nUDR|Udaipur|Maharana Pratap\nJSA|Jaisalmer|Jaisalmer Airport\nBKB|Bikaner|Nal\nIXC|Chandigarh|Chandigarh Intl\nATQ|Amritsar|Sri Guru Ram Dass Jee Intl\nLUH|Ludhiana|Sahnewal\nDED|Dehradun|Jolly Grant\nPGH|Pantnagar|Pantnagar Airport\nSXR|Srinagar|Sheikh ul-Alam Intl\nIXJ|Jammu|Jammu Airport\nIXL|Leh|Kushok Bakula Rimpochee\nKUU|Kullu|Bhuntar\nSLV|Shimla|Shimla Airport\nDHM|Dharamshala|Gaggal\nPAT|Patna|Jay Prakash Narayan Intl\nGAY|Gaya|Gaya Intl\nDBR|Darbhanga|Darbhanga Airport\nIXR|Ranchi|Birsa Munda\nIXW|Jamshedpur|Sonari\nBBI|Bhubaneswar|Biju Patnaik Intl\nJRG|Jharsuguda|Veer Surendra Sai\nRPR|Raipur|Swami Vivekananda\nPAB|Bilaspur|Bilaspur Airport\nNAG|Nagpur|Dr. Babasaheb Ambedkar Intl\nIDR|Indore|Devi Ahilyabai Holkar\nBHO|Bhopal|Raja Bhoj\nJLR|Jabalpur|Dumna\nGWL|Gwalior|Rajmata Vijaya Raje Scindia\nSTV|Surat|Surat Intl\nBDQ|Vadodara|Vadodara Airport\nRAJ|Rajkot|Rajkot Airport\nBHJ|Bhuj|Rudra Mata\nNMI|Navi Mumbai|Navi Mumbai Intl\nISK|Nashik|Ozar\nIXU|Chhatrapati Sambhajinagar|Aurangabad Airport\nKLH|Kolhapur|Kolhapur Airport\nIXE|Mangaluru|Mangaluru Intl\nMYQ|Mysuru|Mysore Airport\nHBX|Hubballi|Hubli Airport\nIXG|Belagavi|Belgaum Airport\nCJB|Coimbatore|Coimbatore Intl\nIXM|Madurai|Madurai Airport\nTRZ|Tiruchirappalli|Trichy Intl\nTCR|Thoothukudi|Tuticorin Airport\nVTZ|Visakhapatnam|Visakhapatnam Airport\nVGA|Vijayawada|Vijayawada Airport\nTIR|Tirupati|Tirupati Airport\nGAU|Guwahati|Lokpriya Gopinath Bordoloi Intl\nDIB|Dibrugarh|Mohanbari\nJRH|Jorhat|Jorhat Airport\nIXS|Silchar|Kumbhirgram\nIMF|Imphal|Bir Tikendrajit Intl\nIXA|Agartala|Maharaja Bir Bikram\nAJL|Aizawl|Lengpui\nDMU|Dimapur|Dimapur Airport\nIXB|Bagdogra|Bagdogra Airport\nPYG|Gangtok|Pakyong\nIXZ|Port Blair|Veer Savarkar Intl\nKBK|Kushinagar|Kushinagar Intl\nAZH|Azamgarh|Azamgarh Airport\nBEK|Bareilly|Bareilly Airport\nCKT|Chitrakoot|Chitrakoot Airport\nHJR|Khajuraho|Khajuraho Airport\nKTU|Kota|Kota Airport\nKQH|Kishangarh|Ajmer Kishangarh\nAIP|Adampur|Adampur Airport\nIXP|Pathankot|Pathankot Airport\nBUP|Bathinda|Bathinda Airport\nHSS|Hisar|Hisar Airport\nSAG|Shirdi|Shirdi Airport\nSDW|Sindhudurg|Chipi Airport\nJLG|Jalgaon|Jalgaon Airport\nSSE|Solapur|Solapur Airport\nNDC|Nanded|Shri Guru Gobind Singh Ji\nGDB|Gondia|Birsi Airport\nCDP|Kadapa|Kadapa Airport\nKJB|Kurnool|Orvakal Airport\nPNY|Puducherry|Puducherry Airport\nRQY|Shivamogga|Shivamogga Airport\nVDY|Ballari|Vidyanagar\nGBI|Kalaburagi|Kalaburagi Airport\nAGX|Agatti|Agatti Airport\nDIU|Diu|Diu Airport\nPBD|Porbandar|Porbandar Airport\nJGA|Jamnagar|Jamnagar Airport\nIXK|Keshod|Keshod Airport\nIXV|Along|Along Airport\nIXT|Pasighat|Pasighat Airport\nTEZ|Tezpur|Salonibari\nIXI|Lilabari|North Lakhimpur\nRUP|Rupsi|Rupsi Airport\nSHL|Shillong|Umroi\nTEI|Tezu|Tezu Airport\nCOH|Cooch Behar|Cooch Behar Airport\nRDP|Durgapur|Kazi Nazrul Islam\nRRK|Rourkela|Rourkela Airport\nDGH|Deoghar|Deoghar Airport\nMZU|Muzaffarpur|Muzaffarpur Airport\nPNE|Purnea|Purnea Airport\nRGH|Balurghat|Balurghat Airport";
+var AIRPORTS_WORLD = "DXB|Dubai|Dubai Intl\nDWC|Dubai|Al Maktoum Intl\nSHJ|Sharjah|Sharjah Intl\nAUH|Abu Dhabi|Zayed Intl\nRKT|Ras Al Khaimah|Ras Al Khaimah Intl\nDOH|Doha|Hamad Intl\nMCT|Muscat|Muscat Intl\nKWI|Kuwait City|Kuwait Intl\nBAH|Bahrain|Bahrain Intl\nRUH|Riyadh|King Khalid Intl\nJED|Jeddah|King Abdulaziz Intl\nMED|Madinah|Prince Mohammad bin Abdulaziz\nDMM|Dammam|King Fahd Intl\nAMM|Amman|Queen Alia Intl\nTLV|Tel Aviv|Ben Gurion\nIST|Istanbul|Istanbul Airport\nCAI|Cairo|Cairo Intl\nNBO|Nairobi|Jomo Kenyatta Intl\nJNB|Johannesburg|O. R. Tambo Intl\nCPT|Cape Town|Cape Town Intl\nADD|Addis Ababa|Bole Intl\nLOS|Lagos|Murtala Muhammed Intl\nCMN|Casablanca|Mohammed V Intl\nMRU|Mauritius|Sir Seewoosagur Ramgoolam Intl\nSEZ|Mahe|Seychelles Intl\nCMB|Colombo|Bandaranaike Intl\nMLE|Male|Velana Intl\nKTM|Kathmandu|Tribhuvan Intl\nDAC|Dhaka|Hazrat Shahjalal Intl\nBKK|Bangkok|Suvarnabhumi\nDMK|Bangkok|Don Mueang\nHKT|Phuket|Phuket Intl\nSIN|Singapore|Changi\nKUL|Kuala Lumpur|Kuala Lumpur Intl\nCGK|Jakarta|Soekarno-Hatta Intl\nDPS|Bali|Ngurah Rai Intl\nMNL|Manila|Ninoy Aquino Intl\nSGN|Ho Chi Minh City|Tan Son Nhat Intl\nHAN|Hanoi|Noi Bai Intl\nHKG|Hong Kong|Hong Kong Intl\nPVG|Shanghai|Pudong Intl\nPEK|Beijing|Capital Intl\nCAN|Guangzhou|Baiyun Intl\nICN|Seoul|Incheon Intl\nNRT|Tokyo|Narita Intl\nHND|Tokyo|Haneda\nKIX|Osaka|Kansai Intl\nTPE|Taipei|Taoyuan Intl\nSYD|Sydney|Kingsford Smith\nMEL|Melbourne|Tullamarine\nPER|Perth|Perth Airport\nAKL|Auckland|Auckland Airport\nLHR|London|Heathrow\nLGW|London|Gatwick\nMAN|Manchester|Manchester Airport\nBHX|Birmingham|Birmingham Airport\nCDG|Paris|Charles de Gaulle\nAMS|Amsterdam|Schiphol\nFRA|Frankfurt|Frankfurt Airport\nMUC|Munich|Munich Airport\nZRH|Zurich|Zurich Airport\nFCO|Rome|Fiumicino\nMXP|Milan|Malpensa\nMAD|Madrid|Barajas\nBCN|Barcelona|El Prat\nLIS|Lisbon|Humberto Delgado\nVIE|Vienna|Vienna Intl\nDUB|Dublin|Dublin Airport\nCPH|Copenhagen|Kastrup\nARN|Stockholm|Arlanda\nOSL|Oslo|Gardermoen\nHEL|Helsinki|Helsinki-Vantaa\nATH|Athens|Eleftherios Venizelos\nSVO|Moscow|Sheremetyevo\nPRG|Prague|Vaclav Havel\nBRU|Brussels|Brussels Airport\nJFK|New York|John F. Kennedy Intl\nEWR|Newark|Newark Liberty Intl\nLAX|Los Angeles|Los Angeles Intl\nSFO|San Francisco|San Francisco Intl\nORD|Chicago|O'Hare Intl\nIAD|Washington|Dulles Intl\nBOS|Boston|Logan Intl\nDFW|Dallas|Dallas/Fort Worth Intl\nIAH|Houston|George Bush Intercontinental\nATL|Atlanta|Hartsfield-Jackson Intl\nMIA|Miami|Miami Intl\nSEA|Seattle|Seattle-Tacoma Intl\nYYZ|Toronto|Pearson Intl\nYVR|Vancouver|Vancouver Intl\nMEX|Mexico City|Benito Juarez Intl\nGRU|Sao Paulo|Guarulhos Intl\nFJR|Fujairah|Fujairah Intl\nAAN|Al Ain|Al Ain Intl\nTIF|Taif|Taif Intl\nAHB|Abha|Abha Intl\nELQ|Buraidah|Prince Naif bin Abdulaziz (Qassim)\nYNB|Yanbu|Prince Abdul Mohsin\nTUU|Tabuk|Prince Sultan bin Abdulaziz\nGIZ|Jazan|King Abdullah bin Abdulaziz\nSOH|Sohar|Sohar Airport\nDQM|Duqm|Duqm Airport\nCNX|Chiang Mai|Chiang Mai Intl\nKBV|Krabi|Krabi Intl\nUSM|Koh Samui|Samui Airport\nHDY|Hat Yai|Hat Yai Intl\nCEI|Chiang Rai|Mae Fah Luang\nPKR|Pokhara|Pokhara Intl\nBWA|Bhairahawa|Gautam Buddha Intl\nBIR|Biratnagar|Biratnagar Airport\nPBH|Paro|Paro Intl (Bhutan)\nCGP|Chittagong|Shah Amanat Intl\nZYL|Sylhet|Osmani Intl\nHRI|Hambantota|Mattala Rajapaksa Intl\nRGN|Yangon|Yangon Intl\nMDL|Mandalay|Mandalay Intl\nKHI|Karachi|Jinnah Intl\nLHE|Lahore|Allama Iqbal Intl\nISB|Islamabad|Islamabad Intl\nKBL|Kabul|Hamid Karzai Intl\nPEN|Penang|Penang Intl\nLGK|Langkawi|Langkawi Intl\nBKI|Kota Kinabalu|Kota Kinabalu Intl\nDAD|Da Nang|Da Nang Intl\nPQC|Phu Quoc|Phu Quoc Intl\nPNH|Phnom Penh|Techo Intl\nREP|Siem Reap|Siem Reap Angkor Intl\nVTE|Vientiane|Wattay Intl\nTHR|Tehran|Imam Khomeini Intl\nBGW|Baghdad|Baghdad Intl\nBEY|Beirut|Rafic Hariri Intl\nTAS|Tashkent|Islam Karimov Intl\nALA|Almaty|Almaty Intl";
+/* =============== END OF EDIT BLOCK =============== */
+
+(function(){
+  var $ = function(id){return document.getElementById(id)};
+  var wa = function(msg){return "https://wa.me/"+CONFIG.phoneIntl+"?text="+encodeURIComponent(msg)};
+  var inr = function(n){return "₹"+Number(n).toLocaleString("en-IN")};
+  var months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  function etaDate(days){
+    var dt = new Date();
+    dt.setDate(dt.getDate() + (days || 4));
+    return dt.getDate() + " " + months[dt.getMonth()];
+  }
+
+  /* Built-in SVG Aviation & Scenic Artwork (100% offline-safe until you paste your own photos) */
+  function svgUri(svg){ return "url(\"data:image/svg+xml;utf8," + encodeURIComponent(svg) + "\")"; }
+  var ARTS = {
+    plane1: svgUri('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 650"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#041936"/><stop offset="55%" stop-color="#0E447A"/><stop offset="100%" stop-color="#1E1433"/></linearGradient></defs><rect width="1200" height="650" fill="url(#g)"/><circle cx="960" cy="140" r="190" fill="#E6C877" opacity=".16"/><path d="M0 500 Q300 420 620 490 T1200 450 L1200 650 L0 650 Z" fill="#fff" opacity=".06"/><path d="M0 540 Q360 470 760 530 T1200 500 L1200 650 L0 650 Z" fill="#fff" opacity=".08"/><path d="M220 390 Q580 260 950 185" stroke="#E6C877" stroke-width="3" stroke-dasharray="10 10" fill="none" opacity=".55"/><g transform="translate(880,155) rotate(-14) scale(1.65)" fill="#fff" opacity=".92"><path d="M0 14 L38 10 L58 -14 L68 -14 L55 10 L82 10 L92 0 L98 0 L92 14 L98 28 L92 28 L82 18 L55 18 L68 42 L58 42 L38 18 L0 14 Z"/></g></svg>'),
+    plane2: svgUri('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 650"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#160814"/><stop offset="50%" stop-color="#5A0F22"/><stop offset="100%" stop-color="#0A1428"/></linearGradient></defs><rect width="1200" height="650" fill="url(#g)"/><circle cx="260" cy="180" r="160" fill="#C9A24B" opacity=".18"/><path d="M120 420 Q560 220 1040 240" stroke="#E6C877" stroke-width="2.5" stroke-dasharray="8 8" fill="none" opacity=".5"/><g transform="translate(690,210) rotate(-6) scale(1.8)" fill="#E6C877" opacity=".9"><path d="M0 14 L38 10 L58 -14 L68 -14 L55 10 L82 10 L92 0 L98 0 L92 14 L98 28 L92 28 L82 18 L55 18 L68 42 L58 42 L38 18 L0 14 Z"/></g><rect x="0" y="540" width="1200" height="110" fill="#050812" opacity=".4"/></svg>'),
+    plane3: svgUri('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 650"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#071E3D"/><stop offset="60%" stop-color="#271238"/><stop offset="100%" stop-color="#4A0E22"/></linearGradient></defs><rect width="1200" height="650" fill="url(#g)"/><circle cx="920" cy="210" r="130" fill="#38BDF8" opacity=".15"/><g transform="translate(830,175) rotate(-18) scale(1.7)" fill="#fff" opacity=".88"><path d="M0 14 L38 10 L58 -14 L68 -14 L55 10 L82 10 L92 0 L98 0 L92 14 L98 28 L92 28 L82 18 L55 18 L68 42 L58 42 L38 18 L0 14 Z"/></g></svg>'),
+    dubai: svgUri('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 700"><defs><linearGradient id="s" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0E6BA8"/><stop offset="55%" stop-color="#0A3A5E"/><stop offset="100%" stop-color="#0B131B"/></linearGradient></defs><rect width="500" height="700" fill="url(#s)"/><ellipse cx="250" cy="390" rx="220" ry="70" fill="#189AB4" opacity=".35"/><path d="M210 380 Q290 220 230 95 L220 95 L220 380 Z" fill="#E6F4F9"/><path d="M220 120 Q285 215 245 360" stroke="#90C2E7" stroke-width="5" fill="none"/><line x1="226" y1="65" x2="226" y2="98" stroke="#fff" stroke-width="4"/><rect x="140" y="370" width="220" height="22" rx="11" fill="#D4AF37" opacity=".45"/></svg>'),
+    oman: svgUri('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 700"><defs><linearGradient id="s" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#CBE3E8"/><stop offset="42%" stop-color="#228B9D"/><stop offset="100%" stop-color="#0D2228"/></linearGradient></defs><rect width="500" height="700" fill="url(#s)"/><path d="M0 150 L180 120 L290 210 L0 260 Z" fill="#6E5544"/><path d="M260 200 L420 135 L500 185 L500 280 L230 250 Z" fill="#523E31"/><ellipse cx="250" cy="340" rx="260" ry="95" fill="#1FA2B8" opacity=".55"/><path d="M160 315 L225 315 L215 330 L170 330 Z" fill="#fff"/><rect x="182" y="303" width="20" height="12" fill="#E2E8F0"/></svg>'),
+    jordan: svgUri('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 700"><defs><linearGradient id="s" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#48BFE3"/><stop offset="40%" stop-color="#C87D55"/><stop offset="100%" stop-color="#1A110C"/></linearGradient></defs><rect width="500" height="700" fill="url(#s)"/><rect x="155" y="185" width="190" height="210" fill="#B56542"/><polygon points="145,190 250,140 355,190" fill="#9E5233"/><rect x="175" y="210" width="16" height="170" fill="#D48B6A"/><rect x="215" y="210" width="16" height="170" fill="#D48B6A"/><rect x="268" y="210" width="16" height="170" fill="#D48B6A"/><rect x="308" y="210" width="16" height="170" fill="#D48B6A"/><rect x="234" y="295" width="32" height="80" fill="#2A160E"/><path d="M0 0 L150 0 Q105 220 140 440 L0 440 Z" fill="#3B1D12"/><path d="M500 0 L350 0 Q395 220 360 440 L500 440 Z" fill="#3B1D12"/></svg>'),
+    greece: svgUri('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 700"><defs><linearGradient id="s" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#60A5FA"/><stop offset="48%" stop-color="#93C5FD"/><stop offset="100%" stop-color="#1E293B"/></linearGradient></defs><rect width="500" height="700" fill="url(#s)"/><path d="M170 250 A80 75 0 0 1 330 250 Z" fill="#1D4E89"/><rect x="120" y="250" width="260" height="180" rx="8" fill="#F8FAFC"/><rect x="180" y="290" width="38" height="60" rx="19" fill="#1E3A8A"/><rect x="282" y="290" width="38" height="60" rx="19" fill="#1E3A8A"/><rect x="65" y="305" width="110" height="125" fill="#E2E8F0"/><rect x="335" y="285" width="120" height="145" fill="#E2E8F0"/></svg>'),
+    beach: svgUri('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 700"><defs><linearGradient id="s" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7DD3FC"/><stop offset="35%" stop-color="#0284C7"/><stop offset="72%" stop-color="#0D9488"/><stop offset="100%" stop-color="#062825"/></linearGradient></defs><rect width="500" height="700" fill="url(#s)"/><path d="M0 190 Q140 165 255 265 Q190 360 0 380 Z" fill="#166534"/><path d="M180 265 Q235 280 265 340 Q210 385 110 375 Z" fill="#D6D3D1" opacity=".8"/><path d="M0 245 Q90 215 160 285 Q120 340 0 330 Z" fill="#22C55E" opacity=".65"/></svg>'),
+    island: svgUri('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 700"><defs><linearGradient id="s" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#38BDF8"/><stop offset="45%" stop-color="#0369A1"/><stop offset="100%" stop-color="#0C1E2B"/></linearGradient></defs><rect width="500" height="700" fill="url(#s)"/><polygon points="90,340 185,150 280,340" fill="#14532D"/><polygon points="240,340 345,190 440,340" fill="#166534"/><circle cx="380" cy="115" r="42" fill="#FDE047" opacity=".75"/></svg>'),
+    city: svgUri('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 700"><defs><linearGradient id="s" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1E1B4B"/><stop offset="50%" stop-color="#312E81"/><stop offset="100%" stop-color="#0B0B14"/></linearGradient></defs><rect width="500" height="700" fill="url(#s)"/><rect x="70" y="190" width="65" height="240" fill="#1E293B"/><rect x="150" y="120" width="75" height="310" fill="#334155"/><rect x="245" y="160" width="80" height="270" fill="#1E293B"/><rect x="345" y="210" width="75" height="220" fill="#334155"/><circle cx="360" cy="105" r="34" fill="#E6C877" opacity=".55"/></svg>')
+  };
+  function bgStyle(imgUrl, artKey){
+    if(imgUrl) return "url('"+imgUrl+"')";
+    return ARTS[artKey] || ARTS.plane1;
+  }
+
+  /* Apply custom Logo */
+  if(CONFIG.logoImg){
+    $("logoImgEl").src = CONFIG.logoImg;
+    $("logoImgEl").hidden = false;
+  } else {
+    $("logoImgEl").hidden = true;
+  }
+
+  /* Airports Autocomplete */
+  var AIRPORTS = (AIRPORTS_IN+"\n"+AIRPORTS_WORLD).split("\n").map(function(l){
+    var p = l.split("|");
+    return p.length>=3 ? {code:p[0], city:p[1], name:p[2]} : null;
+  }).filter(Boolean);
+
+  function bindAC(inputEl, listEl){
+    function showMatches(q){
+      var val = q.toLowerCase().trim();
+      var matches = val ? AIRPORTS.filter(function(a){
+        return a.code.toLowerCase().indexOf(val) > -1 || a.city.toLowerCase().indexOf(val) > -1 || a.name.toLowerCase().indexOf(val) > -1;
+      }).slice(0, 10) : AIRPORTS.filter(function(a){
+        return ["DEL","BOM","LKO","GOP","DXB","AUH","RUH","BKK","SIN","KTM"].indexOf(a.code) > -1;
+      });
+      if(!matches.length){ listEl.hidden = true; return; }
+      listEl.innerHTML = matches.map(function(a){
+        return '<div class="ac-item" data-v="'+a.city+' - '+a.name+' ('+a.code+')"><div><div class="ac-city">'+a.city+'</div><div class="ac-air">'+a.name+'</div></div><span class="ac-code">'+a.code+'</span></div>';
+      }).join("");
+      listEl.hidden = false;
+    }
+    inputEl.addEventListener("focus", function(){ showMatches(this.value); });
+    inputEl.addEventListener("input", function(){ showMatches(this.value); });
+    listEl.addEventListener("mousedown", function(e){
+      var item = e.target.closest(".ac-item");
+      if(item){ inputEl.value = item.getAttribute("data-v"); listEl.hidden = true; }
+    });
+    inputEl.addEventListener("blur", function(){ setTimeout(function(){ listEl.hidden = true; }, 160); });
+  }
+  bindAC($("qFrom"), $("acFrom"));
+  bindAC($("qTo"), $("acTo"));
+
+  /* Mode Switcher: Flights vs Visa */
+  var activeMode = "flights";
+  function setMode(mode){
+    activeMode = mode;
+    var isF = (mode === "flights");
+    $("modeFlights").classList.toggle("on", isF);
+    $("modeVisa").classList.toggle("on", !isF);
+    $("flightsBox").hidden = !isF;
+    $("visaBox").hidden = isF;
+    if(isF){
+      $("heroTitle").textContent = SLIDES[cur].title;
+      $("heroTag").textContent = SLIDES[cur].tag;
+    } else {
+      $("heroTitle").textContent = "Get your visa on time — clear rules & fees.";
+      $("heroTag").textContent = "20 popular destinations · Detailed visa cards · Fast WhatsApp filing.";
+    }
+  }
+  $("modeFlights").onclick = function(){ setMode("flights"); };
+  $("modeVisa").onclick = function(){ setMode("visa"); };
+  $("navFlights").onclick = function(){ setMode("flights"); };
+  $("navVisa").onclick = function(){ setMode("visa"); };
+  $("jumpVisaCards").onclick = function(){ setMode("visa"); window.scrollTo({top:0,behavior:"smooth"}); };
+
+  /* Flight Search Controls */
+  var pax = {a:1,c:0,i:0}, cls = $("qCls");
+  function drawPax(){
+    var n = pax.a+pax.c+pax.i;
+    $("nA").textContent = pax.a; $("nC").textContent = pax.c; $("nI").textContent = pax.i;
+    $("qTrav").textContent = n+" "+(n>1?"Travelers":"Adult")+", "+cls.value;
+  }
+  Array.prototype.forEach.call(document.querySelectorAll(".cnt button"), function(b){
+    b.onclick = function(){
+      var k = b.getAttribute("data-k"), dv = +b.getAttribute("data-d"), n = pax[k]+dv;
+      if(n < (k==="a"?1:0) || n > 9) return;
+      if(k!=="i" && pax.a+pax.c+dv > 9) return;
+      if(k==="i" && n > pax.a) return;
+      pax[k] = n;
+      if(pax.i > pax.a) pax.i = pax.a;
+      drawPax();
+    };
+  });
+  cls.onchange = drawPax;
+  $("qTrav").onclick = function(e){ e.stopPropagation(); $("panel").hidden = !$("panel").hidden; };
+  $("qDone").onclick = function(){ $("panel").hidden = true; };
+  document.addEventListener("click", function(e){
+    if(!$("panel").hidden && !$("panel").contains(e.target) && e.target !== $("qTrav")) $("panel").hidden = true;
+  });
+
+  $("tripType").onchange = function(){
+    var oneWay = ($("tripType").value === "One way");
+    $("qRet").disabled = oneWay;
+    if(oneWay) $("qRet").value = "";
+  };
+  $("qSwap").onclick = function(){
+    var a=$("qFrom").value; $("qFrom").value=$("qTo").value; $("qTo").value=a;
+  };
+  var d = new Date(); d.setMinutes(d.getMinutes()-d.getTimezoneOffset());
+  $("qDate").min = $("qRet").min = d.toISOString().slice(0,10);
+  $("qDate").onchange = function(){ if($("qDate").value) $("qRet").min = $("qDate").value; };
+
+  $("routes").innerHTML = ROUTES.map(function(r,i){
+    return '<button type="button" data-i="'+i+'">'+r[0].replace(/ \(.*\)/,"")+" → "+r[1].replace(/ \(.*\)/,"")+"</button>";
+  }).join("");
+  Array.prototype.forEach.call($("routes").children, function(b){
+    b.onclick = function(){ var r = ROUTES[+b.getAttribute("data-i")]; $("qFrom").value = r[0]; $("qTo").value = r[1]; };
+  });
+
+  $("qGo").onclick = function(){
+    var trip = $("tripType").value, bag = $("bagType").value;
+    var f=$("qFrom").value.trim(), t=$("qTo").value.trim(), dt=$("qDate").value, rt=$("qRet").value;
+    if(!f||!t){alert("Please enter From and To airports."); return;}
+    if(f.toLowerCase()===t.toLowerCase()){alert("From and To cannot be the same."); return;}
+    if(trip==="Round trip" && !rt){alert("Please select a return date."); return;}
+    if(rt && dt && rt<dt){alert("Return date cannot be before departure date."); return;}
+    var sf = document.querySelector("input[name=sf]:checked").value;
+    var prefs = [];
+    if($("chkDirect").checked) prefs.push("Direct flights only");
+    if($("chkNearbyFrom").checked) prefs.push("Include nearby airports");
+    var msg = "Hello V-ASCENT TRAVEL, I want flight details.\nTrip: "+trip+"\nFrom: "+f+"\nTo: "+t+"\nDeparture: "+(dt||"Flexible")+(trip==="Round trip"?"\nReturn: "+rt:"")+"\nTravelers: "+pax.a+" Adult, "+pax.c+" Child, "+pax.i+" Infant\nClass: "+cls.value+"\nBaggage: "+bag+"\nFare type: "+sf+(prefs.length?"\nPreferences: "+prefs.join(", "):"")+"\nPlease share available flights and the best fare.";
+    var w = window.open(wa(msg),"_blank","noopener"); if(!w){ window.location.href = wa(msg); }
+  };
+
+  /* ================= PORTRAIT VISA CARD BUILDER ================= */
+  function buildVisaCard(v, idx){
+    var fee = v.base > 0 ? inr(v.base + CONFIG.visaMarkup) : "Ask on WA";
+    var belowText = v.appoint ? "Request for appointment" : ("Visa by <b>" + etaDate(v.days) + "</b>");
+    return (
+      '<div class="pvisa-wrap" data-vidx="'+idx+'">'+
+        '<div class="pvisa-card" style="background-image:'+bgStyle(v.img, v.art)+'">'+
+          '<div class="pvisa-shade"></div>'+
+          '<div class="pvisa-content">'+
+            '<div class="pvisa-flag">'+v.flag+'</div>'+
+            '<div class="pvisa-name">'+v.country+'</div>'+
+            '<div class="pvisa-line"></div>'+
+            '<div class="pvisa-stats">'+
+              '<div class="pvisa-col"><span>TYPE</span><strong>'+v.type+'</strong></div>'+
+              '<div class="pvisa-col"><span>VALID</span><strong>'+v.valid+'</strong></div>'+
+              '<div class="pvisa-col fee"><span>FEES</span><strong>'+fee+'</strong></div>'+
+            '</div>'+
+          '</div>'+
+        '</div>'+
+        '<div class="pvisa-below"><span>'+belowText+'</span><span style="color:var(--gold2);font-weight:600">Apply →</span></div>'+
+      '</div>'
+    );
+  }
+
+  function openVisaModal(idx){
+    var v = VISA[idx];
+    var total = v.base > 0 ? inr(v.base + CONFIG.visaMarkup) : "Ask on WhatsApp";
+    var mText = "Hello V-ASCENT TRAVEL, I want to apply for "+v.country+" "+v.type+" (Validity: "+v.valid+(v.base>0?", Fee shown: "+total:"")+"). Please share the rules and process.";
+    $("mTitle").textContent = v.flag + " " + v.country + " Visa";
+    $("mBody").innerHTML =
+      '<div class="m-guarantee"><div><strong>'+(v.appoint ? "📅 Embassy Appointment Support" : ("⚡ Get your visa by "+etaDate(v.days)))+'</strong><div style="font-size:.78rem;color:#CBD5E1">Estimated processing: '+v.proc+'</div></div><span class="m-badge">'+v.type+'</span></div>'+
+      '<div class="m-grid">'+
+        '<div class="m-stat"><span>Visa Type</span><b>'+v.type+'</b></div>'+
+        '<div class="m-stat"><span>Validity</span><b>'+v.valid+'</b></div>'+
+        '<div class="m-stat"><span>Length of Stay</span><b>'+v.stay+'</b></div>'+
+        '<div class="m-stat"><span>Entry</span><b>'+v.entry+'</b></div>'+
+      '</div>'+
+      '<div class="m-sec-title">Required Documents &amp; Rules</div>'+
+      '<ul class="m-docs">'+v.docs.map(function(x){return '<li>✓ '+x+'</li>'}).join("")+'</ul>'+
+      '<div class="m-sec-title">Simple 3-Step Visa Process</div>'+
+      '<div class="m-steps">'+
+        '<div class="m-step"><b>1. Send Documents</b>Share passport &amp; photo directly on WhatsApp.</div>'+
+        '<div class="m-step"><b>2. Expert Filing</b>We check every rule and submit your application.</div>'+
+        '<div class="m-step"><b>3. Get Your Visa</b>Receive approved visa PDF on WhatsApp &amp; Email.</div>'+
+      '</div>'+
+      '<div class="m-price-box">'+
+        '<div><span style="font-size:.74rem;color:var(--mute);display:block">Total Visa Fee (All-inclusive)</span><div class="m-price-val">'+total+'</div><div class="m-price-note">Includes filing &amp; end-to-end WhatsApp assistance</div></div>'+
+        '<div class="m-actions">'+
+          '<a class="btn wa" target="_blank" rel="noopener" href="'+wa(mText)+'">Apply on WhatsApp</a>'+
+        '</div>'+
+      '</div>';
+    $("visaModalBg").hidden = false;
+  }
+  $("mClose").onclick = function(){ $("visaModalBg").hidden = true; };
+  $("visaModalBg").onclick = function(e){ if(e.target === $("visaModalBg")) $("visaModalBg").hidden = true; };
+
+  var curFilter = "all";
+  function renderHeroVisas(){
+    var q = ($("visaSearch").value||"").toLowerCase().trim();
+    var html = "";
+    VISA.forEach(function(v, idx){
+      if(q && v.country.toLowerCase().indexOf(q) === -1 && v.type.toLowerCase().indexOf(q) === -1) return;
+      if(curFilter === "e-visa" && v.type !== "E-VISA") return;
+      if(curFilter !== "all" && curFilter !== "e-visa" && v.region !== curFilter) return;
+      html += buildVisaCard(v, idx);
+    });
+    $("visaHeroCards").innerHTML = html || '<p class="note">No matching country found. Message us on WhatsApp for any country visa.</p>';
+  }
+  renderHeroVisas();
+  $("visaShowcaseGrid").innerHTML = VISA.map(buildVisaCard).join("");
+
+  function handleVisaClick(e){
+    var card = e.target.closest("[data-vidx]");
+    if(card) openVisaModal(+card.getAttribute("data-vidx"));
+  }
+  $("visaHeroCards").onclick = handleVisaClick;
+  $("visaShowcaseGrid").onclick = handleVisaClick;
+  $("visaSearch").oninput = renderHeroVisas;
+  Array.prototype.forEach.call($("visaFilters").children, function(btn){
+    btn.onclick = function(){
+      curFilter = btn.getAttribute("data-f");
+      Array.prototype.forEach.call($("visaFilters").children, function(b){ b.classList.toggle("on", b===btn); });
+      renderHeroVisas();
+    };
+  });
+
+  /* Today's Best Fares: Visual Flight Cards + Table */
+  $("fareSub").textContent = "Updated on "+CONFIG.faresUpdated+". Visual deals + quick rate table.";
+  $("flightVisualGrid").innerHTML = FARES.slice(0,4).map(function(r){
+    var m = "Hello V-ASCENT TRAVEL, I want to book "+r.from+" to "+r.to+" (fare shown "+inr(r.price)+"). Please confirm availability.";
+    return (
+      '<div class="fcard">'+
+        '<div class="fcard-img" style="background-image:'+bgStyle(r.img, r.art)+'"><span class="fcard-badge">✈ '+r.type+'</span></div>'+
+        '<div class="fcard-body">'+
+          '<div><div class="fcard-route">'+r.from.replace(/ \(.*\)/,"")+' → '+r.to.replace(/ \(.*\)/,"")+'</div><div class="fcard-meta">'+r.from+' to '+r.to+'</div></div>'+
+          '<div class="fcard-foot"><span class="fcard-price">'+inr(r.price)+'</span><a class="btn sm" target="_blank" rel="noopener" href="'+wa(m)+'">Book Now</a></div>'+
+        '</div>'+
+      '</div>'
+    );
+  }).join("");
+
+  $("fareBody").innerHTML = FARES.map(function(r){
+    var m = "Hello V-ASCENT TRAVEL, I want to book "+r.from+" to "+r.to+" (fare shown "+inr(r.price)+"). Please confirm availability.";
+    return "<tr><td>"+r.from+" → "+r.to+"</td><td>"+r.type+'</td><td class="price">'+inr(r.price)+'</td><td><a class="btn sm" target="_blank" rel="noopener" href="'+wa(m)+'">Book on WhatsApp</a></td></tr>';
+  }).join("");
+
+  /* Contact */
+  $("cPhone").textContent = CONFIG.phoneShow;
+  $("cCall").href = "tel:+"+CONFIG.phoneIntl;
+  $("cWa").href = wa("Hello V-ASCENT TRAVEL, I want to plan a trip.");
+  $("cMail").textContent = CONFIG.email;
+  $("cMailBtn").href = "mailto:"+CONFIG.email;
+  $("cAddr").textContent = CONFIG.address;
+  $("fab").href = wa("Hello V-ASCENT TRAVEL, I have a query.");
+  $("yr").textContent = new Date().getFullYear();
+
+  /* Auto Slider */
+  var cur = 0, dots = $("dots"), timer;
+  SLIDES.forEach(function(s,i){
+    $("sl"+i).style.backgroundImage = bgStyle(s.img, s.art);
+    var b = document.createElement("button"); b.setAttribute("aria-label","Slide "+(i+1));
+    b.onclick = function(){show(i); restart();}; dots.appendChild(b);
+  });
+  function show(i){
+    cur = i;
+    for(var k=0;k<SLIDES.length;k++){
+      $("sl"+k).classList.toggle("on",k===i);
+      dots.children[k].classList.toggle("on",k===i);
+    }
+    if(activeMode === "flights"){
+      $("heroTitle").textContent = SLIDES[i].title;
+      $("heroTag").textContent = SLIDES[i].tag;
+    }
+  }
+  function restart(){clearInterval(timer); timer = setInterval(function(){show((cur+1)%SLIDES.length)},5000);}
+  show(0); restart();
+})();
+</script>
+</body>
+</html>
