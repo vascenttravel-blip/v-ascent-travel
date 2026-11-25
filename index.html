@@ -242,6 +242,25 @@ footer{border-top:1px solid rgba(201,162,75,.3);padding:22px 0;text-align:center
 @media(max-width:440px){
   .pvisa-grid{grid-template-columns:1fr}
 }
+
+/* Live Flight Search Results */
+.live-res{margin-top:20px;background:rgba(15,14,28,.95);border:1px solid rgba(201,162,75,.45);border-radius:16px;padding:18px;box-shadow:0 16px 38px rgba(0,0,0,.45)}
+.lf-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:14px;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:10px}
+.lf-top h3{font-family:var(--font-body);font-size:1.05rem;color:var(--gold2)}
+.lf-list{display:flex;flex-direction:column;gap:10px;max-height:420px;overflow-y:auto;padding-right:4px}
+.lf-card{background:#15182B;border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:14px 16px;display:grid;grid-template-columns:1.2fr 1.2fr auto;gap:14px;align-items:center}
+.lf-card:hover{border-color:var(--gold)}
+.lf-air{display:flex;align-items:center;gap:10px}
+.lf-air img{width:32px;height:32px;border-radius:6px;background:#fff;padding:3px;object-fit:contain}
+.lf-air b{display:block;font-size:.92rem;color:#fff}
+.lf-air small{font-size:.76rem;color:var(--mute)}
+.lf-times{display:flex;align-items:center;gap:12px;justify-content:center;text-align:center}
+.lf-times strong{font-size:1rem;color:#fff;display:block}
+.lf-times span{font-size:.74rem;color:var(--mute)}
+.lf-mid{font-size:.74rem;color:var(--gold2);border-bottom:1px dashed rgba(201,162,75,.5);padding-bottom:2px;min-width:74px}
+.lf-act{display:flex;align-items:center;gap:12px;justify-content:flex-end}
+.lf-price{font-size:1.18rem;font-weight:700;color:var(--gold2);white-space:nowrap}
+@media(max-width:760px){.lf-card{grid-template-columns:1fr;text-align:left}.lf-times{justify-content:flex-start}.lf-act{justify-content:space-between;border-top:1px solid rgba(255,255,255,.08);padding-top:10px}}
 </style>
 </head>
 <body>
@@ -285,7 +304,7 @@ footer{border-top:1px solid rgba(201,162,75,.3);padding:22px 0;text-align:center
     <div id="flightsBox">
       <div class="sky-controls">
         <select class="sky-select" id="tripType" aria-label="Trip type">
-          <option value="One way">One way</option>
+          <option value="One way" selected>One way</option>
           <option value="Round trip">Roundtrip</option>
         </select>
         <select class="sky-select" id="bagType" aria-label="Baggage preference">
@@ -316,7 +335,7 @@ footer{border-top:1px solid rgba(201,162,75,.3);padding:22px 0;text-align:center
 
         <div class="sky-field">
           <label for="qRet">Return</label>
-          <input id="qRet" type="date" disable>
+          <input id="qRet" type="date" disabled>
         </div>
 
         <div class="sky-field last-f">
@@ -349,7 +368,8 @@ footer{border-top:1px solid rgba(201,162,75,.3);padding:22px 0;text-align:center
       </div>
 
       <div class="routes" id="routes" aria-label="Top flight routes"></div>
-      <p class="note">Type any city or airport code (e.g. AUH, DEL, SHJ, DXB, LKO, GOP, VNS, BOM, BKK). Clicking Search opens WhatsApp with your complete flight details.</p>
+      <div id="liveResults" class="live-res" hidden></div>
+      <p class="note">Type any city or airport code (e.g. AUH, DEL, SHJ, DXB, LKO, GOP, VNS, BOM, BKK) and select a date to view live flights &amp; book instantly on WhatsApp.</p>
     </div>
 
     <!-- ================= VISA PANEL (PORTRAIT CARDS LIKE SCREENSHOT) ================= -->
@@ -357,7 +377,7 @@ footer{border-top:1px solid rgba(201,162,75,.3);padding:22px 0;text-align:center
       <div class="atlys-top">
         <div class="atlys-search-wrap">
           <span class="atlys-search-icon">🔍</span>
-          <input type="text" id="visaSearch" class="atlys-search" placeholder="Search country (e.g. UAE, Oman, Jordan, Greece, Seychelles)...">
+          <input type="text" id="visaSearch" class="atlys-search" placeholder="Search country (e.g. UAE, Oman, Saudi Arabia, Thailand, Singapore)...">
         </div>
       </div>
 
@@ -433,6 +453,8 @@ var CONFIG = {
   email: "vascenttravel@gmail.com",
   address: "Deoria, Uttar Pradesh-274001",
   visaMarkup: 1700,                    // ₹1,700 added automatically on top of every base visa fare
+  flightApiUrl: "https://vascentflight.vascenttravel.workers.dev",
+  flightMarkup: 0,                     // Add rupees here if you want extra margin on live flight fares
   faresUpdated: "30 Nov 2026"
 };
 
@@ -454,8 +476,8 @@ var FARES = [
   {from:"Lucknow (LKO)", to:"Ras Al Khaimah (RKT)", type:"International", price:24999, img:"", art:"beach"}
 ];
 
-/* 12 Visa Destinations — first 5 match your exact reference screenshot!
-   `base` = Atlys fare in ₹. Website adds CONFIG.visaMarkup (₹2,000) automatically.
+/* 12 Visa Destinations
+   `base` = Base fare in ₹. Website adds CONFIG.visaMarkup (₹1,700) automatically.
    Put your photo link inside `img:""` anytime to replace the built-in scenic artwork. */
 var VISA = [
   {country:"United Arab Emirates", flag:"🇦🇪", region:"gulf", type:"E-VISA", valid:"60 DAYS", stay:"30 Days", entry:"Single Entry", days:12, proc:"12 Days", appoint:false, base:8475, img:"", art:"dubai", docs:["Passport front & back scan (6+ months valid)","Passport-size white background photo","Confirmed return flight (we can assist)"]},
@@ -469,7 +491,7 @@ var VISA = [
   {country:"Indonesia (Bali)", flag:"🇮🇩", region:"asia", type:"E-VISA", valid:"90 DAYS", stay:"30 Days", entry:"Single Entry", days:5, proc:"5–7 Days", appoint:false, base:0, img:"", art:"beach", docs:["Passport scan (6+ months valid)","Digital photo","Return flight ticket"]},
   {country:"Sri Lanka", flag:"🇱🇰", region:"asia", type:"E-VISA", valid:"180 DAYS", stay:"30 Days", entry:"Double Entry", days:4, proc:"4–6 Days", appoint:false, base:0, img:"", art:"beach", docs:["Passport bio page","Email & travel dates","Return flight details"]},
   {country:"United Arab Emirates", flag:"🇦🇪", region:"gulf", type:"E-VISA", valid:"60 DAYS", stay:"30 Days", entry:"Single Entry", days:12, proc:"12 Days", appoint:false, base:8475, img:"", art:"dubai", docs:["Passport front & back scan (6+ months valid)","Passport-size white background photo","Confirmed return flight (we can assist)"]},
-  {country:"Cambodia", flag:"🇰🇭", region:"asia", type:"E-VISA", valid:"90 DAYS", stay:"30 Days", entry:"Single Entry", days:6, proc:"6–10 Days", appoint:false, base:0, img:"", art:"jordan", docs:["Passport copy","Digital photo","Hotel booking"]},
+  {country:"Cambodia", flag:"🇰🇭", region:"asia", type:"E-VISA", valid:"90 DAYS", stay:"30 Days", entry:"Single Entry", days:6, proc:"6–10 Days", appoint:false, base:0, img:"", art:"jordan", docs:["Passport copy","Digital photo","Hotel booking"]}
 ];
 
 var ROUTES = [
@@ -565,7 +587,7 @@ var AIRPORTS_WORLD = "DXB|Dubai|Dubai Intl\nDWC|Dubai|Al Maktoum Intl\nSHJ|Sharj
       $("heroTag").textContent = SLIDES[cur].tag;
     } else {
       $("heroTitle").textContent = "Get your visa on time — clear rules & fees.";
-      $("heroTag").textContent = "20 popular destinations · Detailed visa cards · Fast WhatsApp filing.";
+      $("heroTag").textContent = "12 popular destinations · Detailed visa cards · Fast WhatsApp filing.";
     }
   }
   $("modeFlights").onclick = function(){ setMode("flights"); };
@@ -618,6 +640,16 @@ var AIRPORTS_WORLD = "DXB|Dubai|Dubai Intl\nDWC|Dubai|Al Maktoum Intl\nSHJ|Sharj
     b.onclick = function(){ var r = ROUTES[+b.getAttribute("data-i")]; $("qFrom").value = r[0]; $("qTo").value = r[1]; };
   });
 
+  function getIata(txt){
+    var m = (txt||"").match(/\(([A-Z]{3})\)/i);
+    if(m) return m[1].toUpperCase();
+    var c = (txt||"").trim();
+    return /^[A-Z]{3}$/i.test(c) ? c.toUpperCase() : "";
+  }
+  function escHtml(s){
+    return String(s||"").replace(/[&<>"']/g,function(ch){return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[ch];});
+  }
+
   $("qGo").onclick = function(){
     var trip = $("tripType").value, bag = $("bagType").value;
     var f=$("qFrom").value.trim(), t=$("qTo").value.trim(), dt=$("qDate").value, rt=$("qRet").value;
@@ -625,12 +657,68 @@ var AIRPORTS_WORLD = "DXB|Dubai|Dubai Intl\nDWC|Dubai|Al Maktoum Intl\nSHJ|Sharj
     if(f.toLowerCase()===t.toLowerCase()){alert("From and To cannot be the same."); return;}
     if(trip==="Round trip" && !rt){alert("Please select a return date."); return;}
     if(rt && dt && rt<dt){alert("Return date cannot be before departure date."); return;}
+
     var sf = document.querySelector("input[name=sf]:checked").value;
     var prefs = [];
     if($("chkDirect").checked) prefs.push("Direct flights only");
     if($("chkNearbyFrom").checked) prefs.push("Include nearby airports");
-    var msg = "Hello V-ASCENT TRAVEL, I want flight details.\nTrip: "+trip+"\nFrom: "+f+"\nTo: "+t+"\nDeparture: "+(dt||"Flexible")+(trip==="Round trip"?"\nReturn: "+rt:"")+"\nTravelers: "+pax.a+" Adult, "+pax.c+" Child, "+pax.i+" Infant\nClass: "+cls.value+"\nBaggage: "+bag+"\nFare type: "+sf+(prefs.length?"\nPreferences: "+prefs.join(", "):"")+"\nPlease share available flights and the best fare.";
-    window.open(wa(msg), "_blank");
+    var baseMsg = "Hello V-ASCENT TRAVEL, I want flight details.\nTrip: "+trip+"\nFrom: "+f+"\nTo: "+t+"\nDeparture: "+(dt||"Flexible")+(trip==="Round trip"?"\nReturn: "+rt:"")+"\nTravelers: "+pax.a+" Adult, "+pax.c+" Child, "+pax.i+" Infant\nClass: "+cls.value+"\nBaggage: "+bag+"\nFare type: "+sf+(prefs.length?"\nPreferences: "+prefs.join(", "):"")+"\nPlease share available flights and the best fare.";
+
+    var fCode = getIata(f), tCode = getIata(t);
+    if(!CONFIG.flightApiUrl || !fCode || !tCode || !dt){
+      window.open(wa(baseMsg), "_blank");
+      return;
+    }
+
+    var box = $("liveResults"), btn = $("qGo");
+    box.hidden = false;
+    box.innerHTML = '<div class="lf-top"><h3>Searching live flights ('+escHtml(fCode)+' → '+escHtml(tCode)+')...</h3></div><p class="note">Fetching live airlines &amp; fares. Please wait 2–3 seconds.</p>';
+    btn.disabled = true; btn.textContent = "Searching...";
+
+    var api = new URL(CONFIG.flightApiUrl);
+    api.searchParams.set("from", fCode);
+    api.searchParams.set("to", tCode);
+    api.searchParams.set("date", dt);
+    if(trip==="Round trip" && rt) api.searchParams.set("ret", rt);
+    api.searchParams.set("trip", trip);
+    api.searchParams.set("adults", pax.a);
+    api.searchParams.set("children", pax.c);
+    api.searchParams.set("infants", pax.i);
+    api.searchParams.set("cls", cls.value);
+    api.searchParams.set("direct", $("chkDirect").checked ? "1" : "0");
+
+    fetch(api.toString())
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        btn.disabled = false; btn.textContent = "Search";
+        var list = (data && data.flights) ? data.flights : [];
+        if(!list.length){
+          box.innerHTML = '<div class="lf-top"><h3>No live flights found online for this date</h3></div><p class="note" style="margin-bottom:12px">Get our offline B2B &amp; special group fares directly on WhatsApp.</p><a class="btn wa" target="_blank" rel="noopener" href="'+wa(baseMsg)+'">Get Best Fare on WhatsApp</a>';
+          return;
+        }
+        var markup = Number(CONFIG.flightMarkup || 0);
+        var cards = list.map(function(fl){
+          var shownPrice = fl.price > 0 ? inr(fl.price + markup) : "Ask on WA";
+          var stopTxt = fl.stops === 0 ? "Non-stop" : (fl.stops + " Stop" + (fl.stops>1?"s":""));
+          var bookMsg = "Hello V-ASCENT TRAVEL, I want to book this flight:\nAirline: "+fl.airline+(fl.flightNo?" ("+fl.flightNo+")":"")+"\nRoute: "+fl.depId+" → "+fl.arrId+"\nTrip: "+trip+"\nDate: "+dt+(trip==="Round trip"?" | Return: "+rt:"")+"\nTiming: "+fl.depTime+" - "+fl.arrTime+" ("+stopTxt+")\nTravelers: "+pax.a+" Adult, "+pax.c+" Child, "+pax.i+" Infant ("+cls.value+")\nLive Fare Shown: "+shownPrice+"\nPlease confirm booking.";
+          return (
+            '<div class="lf-card">'+
+              '<div class="lf-air">'+(fl.logo?'<img src="'+escHtml(fl.logo)+'" alt="">':'')+'<div><b>'+escHtml(fl.airline)+'</b><small>'+escHtml(fl.flightNo)+' · '+escHtml(stopTxt)+'</small></div></div>'+
+              '<div class="lf-times"><div><strong>'+escHtml(fl.depTime)+'</strong><span>'+escHtml(fl.depId)+'</span></div><div class="lf-mid">'+escHtml(fl.duration)+'</div><div><strong>'+escHtml(fl.arrTime)+'</strong><span>'+escHtml(fl.arrId)+'</span></div></div>'+
+              '<div class="lf-act"><span class="lf-price">'+shownPrice+'</span><a class="btn wa sm" target="_blank" rel="noopener" href="'+wa(bookMsg)+'">Book on WhatsApp</a></div>'+
+            '</div>'
+          );
+        }).join("");
+        box.innerHTML =
+          '<div class="lf-top"><h3>✈ Live Flights: '+escHtml(fCode)+' → '+escHtml(tCode)+' ('+escHtml(dt)+')</h3><button type="button" class="btn line sm" id="lfClose">Close ×</button></div>'+
+          '<div class="lf-list">'+cards+'</div>'+
+          '<div style="margin-top:12px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px"><span class="note" style="margin:0">Want a cheaper B2B or group fare? Message us directly.</span><a class="btn sm" target="_blank" rel="noopener" href="'+wa(baseMsg)+'">Ask Special Fare on WhatsApp</a></div>';
+        $("lfClose").onclick = function(){ box.hidden = true; };
+      })
+      .catch(function(){
+        btn.disabled = false; btn.textContent = "Search";
+        box.innerHTML = '<div class="lf-top"><h3>Instant Fare Quote on WhatsApp</h3></div><p class="note" style="margin-bottom:12px">Click below to receive live flight timings and our lowest fare on WhatsApp.</p><a class="btn wa" target="_blank" rel="noopener" href="'+wa(baseMsg)+'">Continue on WhatsApp</a>';
+      });
   };
 
   /* ================= PORTRAIT VISA CARD BUILDER ================= */
