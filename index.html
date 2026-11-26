@@ -261,6 +261,68 @@ footer{border-top:1px solid rgba(201,162,75,.3);padding:22px 0;text-align:center
 .lf-act{display:flex;align-items:center;gap:12px;justify-content:flex-end}
 .lf-price{font-size:1.18rem;font-weight:700;color:var(--gold2);white-space:nowrap}
 @media(max-width:760px){.lf-card{grid-template-columns:1fr;text-align:left}.lf-times{justify-content:flex-start}.lf-act{justify-content:space-between;border-top:1px solid rgba(255,255,255,.08);padding-top:10px}}
+
+/* Emigration & OK to Board Pills */
+.pill.on.e-pill{background:#0D9488;border-color:#0D9488;color:#fff;box-shadow:0 4px 16px rgba(13,148,136,.45)}
+.pill.e-pill:hover{border-color:#5EEAD4}
+.pill.on.o-pill{background:linear-gradient(135deg,#C9A24B,#E6C877);border-color:#E6C877;color:#1a1405;box-shadow:0 4px 16px rgba(201,162,75,.45)}
+.pill.o-pill:hover{border-color:var(--gold2)}
+
+/* Emigration Section (below Visa) */
+.emig-sec{background:linear-gradient(180deg,var(--maroon-d),#0A1120)}
+.emig-notice{background:rgba(201,162,75,.12);border:1px solid rgba(201,162,75,.45);border-left:4px solid var(--gold2);border-radius:10px;padding:12px 16px;margin-bottom:18px;font-size:.88rem;color:#F8FAFC;line-height:1.55}
+.emig-notice strong{color:var(--gold2)}
+.emig-bar{display:grid;grid-template-columns:1.15fr 1fr 1.25fr .9fr auto;gap:8px;align-items:stretch;margin-bottom:22px}
+.emig-field{background:#fff;color:#111236;padding:10px 14px;border-radius:10px;display:flex;flex-direction:column;justify-content:center;min-height:64px}
+.emig-field label{font-size:.72rem;font-weight:600;color:#545860;margin-bottom:3px;display:block}
+.emig-field select,.emig-field input{width:100%;border:0;outline:0;background:transparent;color:#111236;font-size:.9rem;font-weight:500}
+.emig-go{background:#25D366;color:#fff;border:0;border-radius:10px;padding:0 22px;font-size:.95rem;font-weight:700;cursor:pointer;min-height:64px;transition:background .2s;white-space:nowrap}
+.emig-go:hover{background:#1EBE5D}
+.emig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:22px}
+.emig-card{background:linear-gradient(160deg,#13192D,#0D1322);border:1px solid rgba(13,148,136,.45);border-radius:14px;padding:18px;display:flex;flex-direction:column;justify-content:space-between;gap:12px;transition:transform .18s,border-color .18s}
+.emig-card:hover{transform:translateY(-3px);border-color:var(--gold2)}
+.emig-tag{display:inline-block;align-self:flex-start;background:rgba(13,148,136,.2);color:#5EEAD4;border:1px solid rgba(94,234,212,.3);font-size:.7rem;font-weight:600;padding:3px 9px;border-radius:999px;text-transform:uppercase;letter-spacing:.04em}
+.emig-card h3{font-family:var(--font-body);font-size:1.05rem;color:#fff;margin-top:4px}
+.emig-card p{font-size:.83rem;color:var(--mute);line-height:1.5;margin-top:4px}
+.emig-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;border-top:1px solid rgba(255,255,255,.08);padding-top:12px}
+.emig-meta{font-size:.76rem;color:#CBD5E1}
+.emig-meta strong{display:block;font-size:.92rem;color:var(--gold2)}
+.emig-docs-box{background:rgba(255,255,255,.04);border:1px solid rgba(201,162,75,.28);border-radius:12px;padding:15px 18px;margin-bottom:16px}
+.emig-docs-title{font-size:.86rem;font-weight:700;color:var(--gold2);margin-bottom:10px}
+.emig-docs-list{display:flex;flex-wrap:wrap;gap:8px}
+.emig-docs-list span{background:rgba(13,148,136,.15);border:1px solid rgba(94,234,212,.25);color:#E2E8F0;font-size:.79rem;padding:5px 12px;border-radius:999px}
+.emig-disc{background:rgba(11,11,20,.78);border:1px solid rgba(255,255,255,.14);border-left:4px solid #5EEAD4;border-radius:10px;padding:14px 18px;font-size:.82rem;color:#CBD5E1;line-height:1.6}
+.emig-disc strong{color:#5EEAD4}
+
+/* OK to Board (OTB) Section (below Emigration) */
+.otb-sec{background:linear-gradient(180deg,#0A1120,var(--black))}
+.otb-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.otb-card{background:#121526;border:1px solid rgba(201,162,75,.38);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 12px 28px rgba(0,0,0,.42);transition:transform .2s,border-color .2s}
+.otb-card:hover{transform:translateY(-4px);border-color:var(--gold2)}
+.otb-head{height:108px;background-size:cover;background-position:center;position:relative;display:flex;align-items:flex-end;padding:12px 16px}
+.otb-head::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,16,34,.22),rgba(12,15,28,.95))}
+.otb-title{position:relative;z-index:2;display:flex;align-items:center;gap:10px;width:100%}
+.otb-flag{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.16);backdrop-filter:blur(4px);display:inline-flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0;border:1px solid rgba(255,255,255,.25)}
+.otb-title h3{font-family:var(--font-card);font-size:1.18rem;letter-spacing:.06em;color:var(--gold2);text-transform:uppercase;margin:0}
+.otb-list{list-style:none;padding:12px 16px 16px;display:flex;flex-direction:column;gap:0;flex:1}
+.otb-list li{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 2px;border-bottom:1px solid rgba(255,255,255,.08);font-size:.9rem}
+.otb-list li:last-child{border-bottom:0}
+.otb-air{color:#E2E8F0;font-weight:500}
+.otb-rate{color:var(--gold2);font-weight:700;font-size:.95rem;white-space:nowrap}
+
+@media(max-width:1100px){
+  .otb-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:980px){
+  .emig-bar{grid-template-columns:1fr 1fr}
+  .emig-go{grid-column:1 / -1;min-height:52px}
+  .emig-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:680px){
+  .emig-bar{grid-template-columns:1fr}
+  .emig-grid{grid-template-columns:1fr}
+  .otb-grid{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
@@ -273,9 +335,10 @@ footer{border-top:1px solid rgba(201,162,75,.3);padding:22px 0;text-align:center
   <div class="nav-right">
     <nav>
       <a href="#top" id="navFlights">Flights</a>
-      <a href="#top" id="navVisa">Visa</a>
+      <a href="#visa" id="navVisa">Visa</a>
+      <a href="#emigration" id="navEmig">Emigration</a>
+      <a href="#otb" id="navOtb">OK to Board</a>
       <a href="#fares">Best Fares</a>
-      <a href="#visa">All Visas</a>
       <a href="#contact">Contact</a>
     </nav>
     <span class="locale-pill">🇮🇳 India · ₹ INR</span>
@@ -295,6 +358,8 @@ footer{border-top:1px solid rgba(201,162,75,.3);padding:22px 0;text-align:center
     <div class="mode-pills" role="tablist">
       <button type="button" class="pill f-pill on" id="modeFlights">✈ Flights</button>
       <button type="button" class="pill v-pill" id="modeVisa">🛂 Visa</button>
+      <button type="button" class="pill e-pill" id="modeEmig">🛡️ Emigration</button>
+      <button type="button" class="pill o-pill" id="modeOtb">✅ OK to Board</button>
     </div>
 
     <h1 id="heroTitle">Millions of cheap flights. One simple search.</h1>
@@ -415,6 +480,82 @@ footer{border-top:1px solid rgba(201,162,75,.3);padding:22px 0;text-align:center
   </p>
 </div></section>
 
+<!-- EMIGRATION CLEARANCE SECTION (6 GULF COUNTRIES) -->
+<section class="emig-sec" id="emigration"><div class="wrap">
+  <h2>Emigration Clearance (6 Gulf Countries)</h2>
+  <p class="sub">POE Emigration Clearance, PBBY Insurance &amp; e-Migrate assistance for K.S.A., Qatar, Oman, Bahrain, Kuwait &amp; UAE.</p>
+
+  <div class="emig-notice">
+    <strong>Notice:</strong> Emigration charges vary based on the type of service and your document status. Please connect with us via Call or WhatsApp for exact fees and eligibility.
+  </div>
+
+  <div class="emig-bar">
+    <div class="emig-field">
+      <label for="eCountry">Destination Country</label>
+      <select id="eCountry">
+        <option value="K.S.A. (Saudi Arabia)">K.S.A. (Saudi Arabia)</option>
+        <option value="Qatar">Qatar</option>
+        <option value="Oman">Oman</option>
+        <option value="Bahrain">Bahrain</option>
+        <option value="Kuwait">Kuwait</option>
+        <option value="UAE (Dubai / Abu Dhabi / Sharjah)">UAE (Dubai / Abu Dhabi / Sharjah)</option>
+      </select>
+    </div>
+
+    <div class="emig-field">
+      <label for="ePassport">Passport Category</label>
+      <select id="ePassport">
+        <option value="ECR (Emigration Check Required)">ECR Passport</option>
+        <option value="ECNR (Non-ECR)">ECNR Passport</option>
+        <option value="Not Sure (Need Check)">Not Sure (Need Check)</option>
+      </select>
+    </div>
+
+    <div class="emig-field">
+      <label for="eService">Emigration Service</label>
+      <select id="eService">
+        <option value="Emigration Clearance (POE)">Emigration Clearance (POE)</option>
+        <option value="PBBY Insurance (2 Years)">PBBY Insurance (2 Years)</option>
+        <option value="e-Migrate Registration &amp; Status Check">e-Migrate Status Check</option>
+        <option value="Complete Package (Emigration + PBBY + Flight)">Complete Package (Emigration + PBBY + Flight)</option>
+      </select>
+    </div>
+
+    <div class="emig-field">
+      <label for="eDate">Travel Date (Optional)</label>
+      <input id="eDate" type="date">
+    </div>
+
+    <button class="emig-go" id="eGo" type="button">Ask on WhatsApp</button>
+  </div>
+
+  <div class="emig-grid" id="emigCards"></div>
+
+  <div class="emig-docs-box">
+    <div class="emig-docs-title">Common Documents Required for Emigration Clearance</div>
+    <div class="emig-docs-list">
+      <span>✓ Original Passport (ECR, 6+ months valid)</span>
+      <span>✓ Valid Employment Visa Copy</span>
+      <span>✓ Employment Contract / Offer Letter</span>
+      <span>✓ PBBY Insurance Policy</span>
+      <span>✓ Confirmed Flight Ticket (if booked)</span>
+      <span>✓ Passport Photo &amp; Nominee Details</span>
+    </div>
+  </div>
+
+  <div class="emig-disc">
+    <strong>Disclaimer &amp; Refund Policy:</strong> All services are provided by V-ASCENT TRAVEL. Emigration charges, service availability, and processing timelines are subject to terms and conditions and depend on the verification and status of your documents. Since fees vary for each service category, please connect with us via Call or WhatsApp for exact fares. In the event of any cancellation or application rejection, refunds will be processed strictly in accordance with applicable terms and conditions.
+  </div>
+</div></section>
+
+<!-- OK TO BOARD (OTB) RATES SECTION -->
+<section class="otb-sec" id="otb"><div class="wrap">
+  <h2>OK to Board (OTB) Rate List</h2>
+  <p class="sub">Country-wise and airline-wise OK to Board (OTB) charges for Gulf routes. Connect via Call or WhatsApp for quick processing.</p>
+  <div class="otb-grid" id="otbGrid"></div>
+  <p class="note">OK to Board (OTB) charges are subject to airline rules and document verification. Please call or WhatsApp us to process your OTB.</p>
+</div></section>
+
 <!-- CONTACT -->
 <section class="contact" id="contact"><div class="wrap">
   <h2>Contact V-ASCENT TRAVEL</h2>
@@ -454,7 +595,7 @@ var CONFIG = {
   address: "Deoria, Uttar Pradesh-274001",
   visaMarkup: 1700,                    // ₹1,700 added automatically on top of every base visa fare
   flightApiUrl: "https://vascentflight.vascenttravel.workers.dev",
-  flightMarkup: 0,                     // Add rupees here if you want extra margin on live flight fares
+  flightMarkup: 0,
   faresUpdated: "30 Nov 2026"
 };
 
@@ -502,6 +643,48 @@ var ROUTES = [
 
 var AIRPORTS_IN = "DEL|Delhi|Indira Gandhi Intl\nBOM|Mumbai|Chhatrapati Shivaji Maharaj Intl\nBLR|Bengaluru|Kempegowda Intl\nMAA|Chennai|Chennai Intl\nCCU|Kolkata|Netaji Subhas Chandra Bose Intl\nHYD|Hyderabad|Rajiv Gandhi Intl\nAMD|Ahmedabad|Sardar Vallabhbhai Patel Intl\nPNQ|Pune|Pune Intl\nGOI|Goa|Dabolim\nGOX|Goa|Manohar Intl (Mopa)\nCOK|Kochi|Cochin Intl\nTRV|Thiruvananthapuram|Trivandrum Intl\nCCJ|Kozhikode|Calicut Intl\nCNN|Kannur|Kannur Intl\nLKO|Lucknow|Chaudhary Charan Singh Intl\nGOP|Gorakhpur|Gorakhpur Airport\nVNS|Varanasi|Lal Bahadur Shastri Intl\nIXD|Prayagraj|Prayagraj Airport\nKNU|Kanpur|Chakeri\nAYJ|Ayodhya|Maharishi Valmiki Intl\nAGR|Agra|Kheria\nHDO|Hindon|Ghaziabad Airport\nJAI|Jaipur|Jaipur Intl\nJDH|Jodhpur|Jodhpur Airport\nUDR|Udaipur|Maharana Pratap\nJSA|Jaisalmer|Jaisalmer Airport\nBKB|Bikaner|Nal\nIXC|Chandigarh|Chandigarh Intl\nATQ|Amritsar|Sri Guru Ram Dass Jee Intl\nLUH|Ludhiana|Sahnewal\nDED|Dehradun|Jolly Grant\nPGH|Pantnagar|Pantnagar Airport\nSXR|Srinagar|Sheikh ul-Alam Intl\nIXJ|Jammu|Jammu Airport\nIXL|Leh|Kushok Bakula Rimpochee\nKUU|Kullu|Bhuntar\nSLV|Shimla|Shimla Airport\nDHM|Dharamshala|Gaggal\nPAT|Patna|Jay Prakash Narayan Intl\nGAY|Gaya|Gaya Intl\nDBR|Darbhanga|Darbhanga Airport\nIXR|Ranchi|Birsa Munda\nIXW|Jamshedpur|Sonari\nBBI|Bhubaneswar|Biju Patnaik Intl\nJRG|Jharsuguda|Veer Surendra Sai\nRPR|Raipur|Swami Vivekananda\nPAB|Bilaspur|Bilaspur Airport\nNAG|Nagpur|Dr. Babasaheb Ambedkar Intl\nIDR|Indore|Devi Ahilyabai Holkar\nBHO|Bhopal|Raja Bhoj\nJLR|Jabalpur|Dumna\nGWL|Gwalior|Rajmata Vijaya Raje Scindia\nSTV|Surat|Surat Intl\nBDQ|Vadodara|Vadodara Airport\nRAJ|Rajkot|Rajkot Airport\nBHJ|Bhuj|Rudra Mata\nNMI|Navi Mumbai|Navi Mumbai Intl\nISK|Nashik|Ozar\nIXU|Chhatrapati Sambhajinagar|Aurangabad Airport\nKLH|Kolhapur|Kolhapur Airport\nIXE|Mangaluru|Mangaluru Intl\nMYQ|Mysuru|Mysore Airport\nHBX|Hubballi|Hubli Airport\nIXG|Belagavi|Belgaum Airport\nCJB|Coimbatore|Coimbatore Intl\nIXM|Madurai|Madurai Airport\nTRZ|Tiruchirappalli|Trichy Intl\nTCR|Thoothukudi|Tuticorin Airport\nVTZ|Visakhapatnam|Visakhapatnam Airport\nVGA|Vijayawada|Vijayawada Airport\nTIR|Tirupati|Tirupati Airport\nGAU|Guwahati|Lokpriya Gopinath Bordoloi Intl\nDIB|Dibrugarh|Mohanbari\nJRH|Jorhat|Jorhat Airport\nIXS|Silchar|Kumbhirgram\nIMF|Imphal|Bir Tikendrajit Intl\nIXA|Agartala|Maharaja Bir Bikram\nAJL|Aizawl|Lengpui\nDMU|Dimapur|Dimapur Airport\nIXB|Bagdogra|Bagdogra Airport\nPYG|Gangtok|Pakyong\nIXZ|Port Blair|Veer Savarkar Intl\nKBK|Kushinagar|Kushinagar Intl\nAZH|Azamgarh|Azamgarh Airport\nBEK|Bareilly|Bareilly Airport\nCKT|Chitrakoot|Chitrakoot Airport\nHJR|Khajuraho|Khajuraho Airport\nKTU|Kota|Kota Airport\nKQH|Kishangarh|Ajmer Kishangarh\nAIP|Adampur|Adampur Airport\nIXP|Pathankot|Pathankot Airport\nBUP|Bathinda|Bathinda Airport\nHSS|Hisar|Hisar Airport\nSAG|Shirdi|Shirdi Airport\nSDW|Sindhudurg|Chipi Airport\nJLG|Jalgaon|Jalgaon Airport\nSSE|Solapur|Solapur Airport\nNDC|Nanded|Shri Guru Gobind Singh Ji\nGDB|Gondia|Birsi Airport\nCDP|Kadapa|Kadapa Airport\nKJB|Kurnool|Orvakal Airport\nPNY|Puducherry|Puducherry Airport\nRQY|Shivamogga|Shivamogga Airport\nVDY|Ballari|Vidyanagar\nGBI|Kalaburagi|Kalaburagi Airport\nAGX|Agatti|Agatti Airport\nDIU|Diu|Diu Airport\nPBD|Porbandar|Porbandar Airport\nJGA|Jamnagar|Jamnagar Airport\nIXK|Keshod|Keshod Airport\nIXV|Along|Along Airport\nIXT|Pasighat|Pasighat Airport\nTEZ|Tezpur|Salonibari\nIXI|Lilabari|North Lakhimpur\nRUP|Rupsi|Rupsi Airport\nSHL|Shillong|Umroi\nTEI|Tezu|Tezu Airport\nCOH|Cooch Behar|Cooch Behar Airport\nRDP|Durgapur|Kazi Nazrul Islam\nRRK|Rourkela|Rourkela Airport\nDGH|Deoghar|Deoghar Airport\nMZU|Muzaffarpur|Muzaffarpur Airport\nPNE|Purnea|Purnea Airport\nRGH|Balurghat|Balurghat Airport";
 var AIRPORTS_WORLD = "DXB|Dubai|Dubai Intl\nDWC|Dubai|Al Maktoum Intl\nSHJ|Sharjah|Sharjah Intl\nAUH|Abu Dhabi|Zayed Intl\nRKT|Ras Al Khaimah|Ras Al Khaimah Intl\nDOH|Doha|Hamad Intl\nMCT|Muscat|Muscat Intl\nKWI|Kuwait City|Kuwait Intl\nBAH|Bahrain|Bahrain Intl\nRUH|Riyadh|King Khalid Intl\nJED|Jeddah|King Abdulaziz Intl\nMED|Madinah|Prince Mohammad bin Abdulaziz\nDMM|Dammam|King Fahd Intl\nAMM|Amman|Queen Alia Intl\nTLV|Tel Aviv|Ben Gurion\nIST|Istanbul|Istanbul Airport\nCAI|Cairo|Cairo Intl\nNBO|Nairobi|Jomo Kenyatta Intl\nJNB|Johannesburg|O. R. Tambo Intl\nCPT|Cape Town|Cape Town Intl\nADD|Addis Ababa|Bole Intl\nLOS|Lagos|Murtala Muhammed Intl\nCMN|Casablanca|Mohammed V Intl\nMRU|Mauritius|Sir Seewoosagur Ramgoolam Intl\nSEZ|Mahe|Seychelles Intl\nCMB|Colombo|Bandaranaike Intl\nMLE|Male|Velana Intl\nKTM|Kathmandu|Tribhuvan Intl\nDAC|Dhaka|Hazrat Shahjalal Intl\nBKK|Bangkok|Suvarnabhumi\nDMK|Bangkok|Don Mueang\nHKT|Phuket|Phuket Intl\nSIN|Singapore|Changi\nKUL|Kuala Lumpur|Kuala Lumpur Intl\nCGK|Jakarta|Soekarno-Hatta Intl\nDPS|Bali|Ngurah Rai Intl\nMNL|Manila|Ninoy Aquino Intl\nSGN|Ho Chi Minh City|Tan Son Nhat Intl\nHAN|Hanoi|Noi Bai Intl\nHKG|Hong Kong|Hong Kong Intl\nPVG|Shanghai|Pudong Intl\nPEK|Beijing|Capital Intl\nCAN|Guangzhou|Baiyun Intl\nICN|Seoul|Incheon Intl\nNRT|Tokyo|Narita Intl\nHND|Tokyo|Haneda\nKIX|Osaka|Kansai Intl\nTPE|Taipei|Taoyuan Intl\nSYD|Sydney|Kingsford Smith\nMEL|Melbourne|Tullamarine\nPER|Perth|Perth Airport\nAKL|Auckland|Auckland Airport\nLHR|London|Heathrow\nLGW|London|Gatwick\nMAN|Manchester|Manchester Airport\nBHX|Birmingham|Birmingham Airport\nCDG|Paris|Charles de Gaulle\nAMS|Amsterdam|Schiphol\nFRA|Frankfurt|Frankfurt Airport\nMUC|Munich|Munich Airport\nZRH|Zurich|Zurich Airport\nFCO|Rome|Fiumicino\nMXP|Milan|Malpensa\nMAD|Madrid|Barajas\nBCN|Barcelona|El Prat\nLIS|Lisbon|Humberto Delgado\nVIE|Vienna|Vienna Intl\nDUB|Dublin|Dublin Airport\nCPH|Copenhagen|Kastrup\nARN|Stockholm|Arlanda\nOSL|Oslo|Gardermoen\nHEL|Helsinki|Helsinki-Vantaa\nATH|Athens|Eleftherios Venizelos\nSVO|Moscow|Sheremetyevo\nPRG|Prague|Vaclav Havel\nBRU|Brussels|Brussels Airport\nJFK|New York|John F. Kennedy Intl\nEWR|Newark|Newark Liberty Intl\nLAX|Los Angeles|Los Angeles Intl\nSFO|San Francisco|San Francisco Intl\nORD|Chicago|O'Hare Intl\nIAD|Washington|Dulles Intl\nBOS|Boston|Logan Intl\nDFW|Dallas|Dallas/Fort Worth Intl\nIAH|Houston|George Bush Intercontinental\nATL|Atlanta|Hartsfield-Jackson Intl\nMIA|Miami|Miami Intl\nSEA|Seattle|Seattle-Tacoma Intl\nYYZ|Toronto|Pearson Intl\nYVR|Vancouver|Vancouver Intl\nMEX|Mexico City|Benito Juarez Intl\nGRU|Sao Paulo|Guarulhos Intl\nFJR|Fujairah|Fujairah Intl\nAAN|Al Ain|Al Ain Intl\nTIF|Taif|Taif Intl\nAHB|Abha|Abha Intl\nELQ|Buraidah|Prince Naif bin Abdulaziz (Qassim)\nYNB|Yanbu|Prince Abdul Mohsin\nTUU|Tabuk|Prince Sultan bin Abdulaziz\nGIZ|Jazan|King Abdullah bin Abdulaziz\nSOH|Sohar|Sohar Airport\nDQM|Duqm|Duqm Airport\nCNX|Chiang Mai|Chiang Mai Intl\nKBV|Krabi|Krabi Intl\nUSM|Koh Samui|Samui Airport\nHDY|Hat Yai|Hat Yai Intl\nCEI|Chiang Rai|Mae Fah Luang\nPKR|Pokhara|Pokhara Intl\nBWA|Bhairahawa|Gautam Buddha Intl\nBIR|Biratnagar|Biratnagar Airport\nPBH|Paro|Paro Intl (Bhutan)\nCGP|Chittagong|Shah Amanat Intl\nZYL|Sylhet|Osmani Intl\nHRI|Hambantota|Mattala Rajapaksa Intl\nRGN|Yangon|Yangon Intl\nMDL|Mandalay|Mandalay Intl\nKHI|Karachi|Jinnah Intl\nLHE|Lahore|Allama Iqbal Intl\nISB|Islamabad|Islamabad Intl\nKBL|Kabul|Hamid Karzai Intl\nPEN|Penang|Penang Intl\nLGK|Langkawi|Langkawi Intl\nBKI|Kota Kinabalu|Kota Kinabalu Intl\nDAD|Da Nang|Da Nang Intl\nPQC|Phu Quoc|Phu Quoc Intl\nPNH|Phnom Penh|Techo Intl\nREP|Siem Reap|Siem Reap Angkor Intl\nVTE|Vientiane|Wattay Intl\nTHR|Tehran|Imam Khomeini Intl\nBGW|Baghdad|Baghdad Intl\nBEY|Beirut|Rafic Hariri Intl\nTAS|Tashkent|Islam Karimov Intl\nALA|Almaty|Almaty Intl";
+/* Emigration Countries (6 Gulf Countries — keep price: 0 to show "Ask on WhatsApp") */
+var EMIGRATION = [
+  {flag:"🇸🇦", title:"K.S.A. (Saudi Arabia)", tag:"ECR Emigration", desc:"POE Emigration Clearance, PBBY Insurance & e-Migrate verification for Saudi Arabia employment visas.", time:"1–3 Working Days", price:0},
+  {flag:"🇶🇦", title:"Qatar", tag:"ECR Emigration", desc:"Complete Protector of Emigrants (POE) clearance & PBBY insurance assistance for Qatar work visas.", time:"1–3 Working Days", price:0},
+  {flag:"🇴🇲", title:"Oman", tag:"ECR Emigration", desc:"Fast POE Emigration Clearance, document check & PBBY policy support for Oman employment visas.", time:"1–3 Working Days", price:0},
+  {flag:"🇧🇭", title:"Bahrain", tag:"ECR Emigration", desc:"Hassle-free Emigration Clearance (POE), e-Migrate check & PBBY insurance for Bahrain work visas.", time:"1–3 Working Days", price:0},
+  {flag:"🇰🇼", title:"Kuwait", tag:"ECR Emigration", desc:"End-to-end POE Emigration Clearance, employer verification & PBBY insurance for Kuwait work visas.", time:"1–3 Working Days", price:0},
+  {flag:"🇦🇪", title:"UAE", tag:"ECR Emigration", desc:"Quick POE Emigration Clearance & PBBY insurance for Dubai, Abu Dhabi & Sharjah employment visas.", time:"1–3 Working Days", price:0}
+];
+
+/* OK to Board (OTB) Rate List — Edit airline names or prices anytime */
+var OTB = [
+  {country:"UAE", flag:"🇦🇪", img:"", art:"dubai", items:[
+    {airline:"Air India", price:500},
+    {airline:"IndiGo", price:500},
+    {airline:"SpiceJet", price:450},
+    {airline:"Oman Air", price:500},
+    {airline:"Akasa Air", price:750},
+    {airline:"Air Arabia", price:450}
+  ]},
+  {country:"OMAN", flag:"🇴🇲", img:"", art:"oman", items:[
+    {airline:"Air India", price:600},
+    {airline:"IndiGo", price:500},
+    {airline:"Air Arabia", price:700},
+    {airline:"Air India Express", price:600},
+    {airline:"Oman Air", price:500}
+  ]},
+  {country:"QATAR", flag:"🇶🇦", img:"", art:"city", items:[
+    {airline:"Air India", price:800},
+    {airline:"IndiGo", price:500},
+    {airline:"Air Arabia", price:700},
+    {airline:"Air India Express", price:800},
+    {airline:"Oman Air", price:700},
+    {airline:"Akasa Air", price:750}
+  ]},
+  {country:"BAHRAIN", flag:"🇧🇭", img:"", art:"plane2", items:[
+    {airline:"Air India", price:750},
+    {airline:"IndiGo", price:800},
+    {airline:"Air Arabia", price:700},
+    {airline:"Air India Express", price:850}
+  ]}
+];
 /* =============== END OF EDIT BLOCK =============== */
 
 (function(){
@@ -590,11 +773,70 @@ var AIRPORTS_WORLD = "DXB|Dubai|Dubai Intl\nDWC|Dubai|Al Maktoum Intl\nSHJ|Sharj
       $("heroTag").textContent = "12 popular destinations · Detailed visa cards · Fast WhatsApp filing.";
     }
   }
-  $("modeFlights").onclick = function(){ setMode("flights"); };
-  $("modeVisa").onclick = function(){ setMode("visa"); };
-  $("navFlights").onclick = function(){ setMode("flights"); };
-  $("navVisa").onclick = function(){ setMode("visa"); };
-  $("jumpVisaCards").onclick = function(){ setMode("visa"); window.scrollTo({top:0,behavior:"smooth"}); };
+  function setPillActive(activeId){
+    ["modeFlights","modeVisa","modeEmig","modeOtb"].forEach(function(id){
+      $(id).classList.toggle("on", id === activeId);
+    });
+  }
+  $("modeFlights").onclick = function(){ setMode("flights"); setPillActive("modeFlights"); };
+  $("modeVisa").onclick = function(){ setMode("visa"); setPillActive("modeVisa"); };
+  $("modeEmig").onclick = function(){
+    setMode("flights");
+    setPillActive("modeEmig");
+    var el = $("emigration");
+    if(el) el.scrollIntoView({behavior:"smooth"});
+  };
+  $("modeOtb").onclick = function(){
+    setMode("flights");
+    setPillActive("modeOtb");
+    var el = $("otb");
+    if(el) el.scrollIntoView({behavior:"smooth"});
+  };
+  $("navFlights").onclick = function(){ setMode("flights"); setPillActive("modeFlights"); };
+  $("navVisa").onclick = function(){ setPillActive("modeVisa"); };
+  $("navEmig").onclick = function(){ setPillActive("modeEmig"); };
+  $("navOtb").onclick = function(){ setPillActive("modeOtb"); };
+  $("jumpVisaCards").onclick = function(){ setMode("visa"); setPillActive("modeVisa"); window.scrollTo({top:0,behavior:"smooth"}); };
+
+  /* Emigration Section Render */
+  $("emigCards").innerHTML = EMIGRATION.map(function(item){
+    var feeText = item.price > 0 ? inr(item.price) : "Ask on WhatsApp";
+    var msg = "Hello V-ASCENT TRAVEL, I want Emigration Clearance for "+item.title+" (Processing: "+item.time+(item.price>0?", Fee: "+feeText:"")+"). Please share required documents and charges.";
+    return (
+      '<div class="emig-card">'+
+        '<div>'+
+          '<span class="emig-tag">'+item.tag+'</span>'+
+          '<h3>'+(item.flag ? item.flag + ' ' : '')+item.title+'</h3>'+
+          '<p>'+item.desc+'</p>'+
+        '</div>'+
+        '<div class="emig-foot">'+
+          '<div class="emig-meta"><span>'+item.time+'</span><strong>'+feeText+'</strong></div>'+
+          '<a class="btn wa sm" target="_blank" rel="noopener" href="'+wa(msg)+'">Ask on WhatsApp</a>'+
+        '</div>'+
+      '</div>'
+    );
+  }).join("");
+
+  $("eGo").onclick = function(){
+    var c = $("eCountry").value, p = $("ePassport").value, s = $("eService").value, dt = $("eDate").value;
+    var msg = "Hello V-ASCENT TRAVEL, I want Emigration assistance.\nDestination Country: "+c+"\nPassport Category: "+p+"\nService Required: "+s+"\nExpected Travel Date: "+(dt||"Flexible")+"\nPlease share the required documents, processing time, and exact charges.";
+    window.open(wa(msg), "_blank");
+  };
+
+  /* OK to Board (OTB) Rate List Render — Display Only (No Buttons) */
+  $("otbGrid").innerHTML = OTB.map(function(c){
+    var rows = c.items.map(function(it){
+      return '<li><span class="otb-air">'+it.airline+'</span><span class="otb-rate">'+inr(it.price)+'</span></li>';
+    }).join("");
+    return (
+      '<div class="otb-card">'+
+        '<div class="otb-head" style="background-image:'+bgStyle(c.img, c.art)+'">'+
+          '<div class="otb-title"><span class="otb-flag">'+c.flag+'</span><h3>'+c.country+'</h3></div>'+
+        '</div>'+
+        '<ul class="otb-list">'+rows+'</ul>'+
+      '</div>'
+    );
+  }).join("");
 
   /* Flight Search Controls */
   var pax = {a:1,c:0,i:0}, cls = $("qCls");
@@ -630,7 +872,7 @@ var AIRPORTS_WORLD = "DXB|Dubai|Dubai Intl\nDWC|Dubai|Al Maktoum Intl\nSHJ|Sharj
     var a=$("qFrom").value; $("qFrom").value=$("qTo").value; $("qTo").value=a;
   };
   var d = new Date(); d.setMinutes(d.getMinutes()-d.getTimezoneOffset());
-  $("qDate").min = $("qRet").min = d.toISOString().slice(0,10);
+  $("qDate").min = $("qRet").min = $("eDate").min = d.toISOString().slice(0,10);
   $("qDate").onchange = function(){ if($("qDate").value) $("qRet").min = $("qDate").value; };
 
   $("routes").innerHTML = ROUTES.map(function(r,i){
@@ -696,9 +938,10 @@ var AIRPORTS_WORLD = "DXB|Dubai|Dubai Intl\nDWC|Dubai|Al Maktoum Intl\nSHJ|Sharj
           box.innerHTML = '<div class="lf-top"><h3>No live flights found online for this date</h3></div><p class="note" style="margin-bottom:12px">Get our offline B2B &amp; special group fares directly on WhatsApp.</p><a class="btn wa" target="_blank" rel="noopener" href="'+wa(baseMsg)+'">Get Best Fare on WhatsApp</a>';
           return;
         }
-        var markup = Number(CONFIG.flightMarkup || 0);
+        var _s = (trip === "Round trip" ? 2 : 1);
+        var _adj = (299 * _s) + Number(CONFIG.flightMarkup || 0);
         var cards = list.map(function(fl){
-          var shownPrice = fl.price > 0 ? inr(fl.price + markup) : "Ask on WA";
+          var shownPrice = fl.price > 0 ? inr(fl.price + _adj) : "Ask on WA";
           var stopTxt = fl.stops === 0 ? "Non-stop" : (fl.stops + " Stop" + (fl.stops>1?"s":""));
           var bookMsg = "Hello V-ASCENT TRAVEL, I want to book this flight:\nAirline: "+fl.airline+(fl.flightNo?" ("+fl.flightNo+")":"")+"\nRoute: "+fl.depId+" → "+fl.arrId+"\nTrip: "+trip+"\nDate: "+dt+(trip==="Round trip"?" | Return: "+rt:"")+"\nTiming: "+fl.depTime+" - "+fl.arrTime+" ("+stopTxt+")\nTravelers: "+pax.a+" Adult, "+pax.c+" Child, "+pax.i+" Infant ("+cls.value+")\nLive Fare Shown: "+shownPrice+"\nPlease confirm booking.";
           return (
